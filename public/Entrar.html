@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+
+
+    <div class="background-login">
+        <div class="container-login">
+            <div class="box-login">
+                  <div class="logo-box-cadastro">
+                    <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
+                </div>
+                <div class="form-login" action="">
+                    <h1>Criar sua conta</h1>
+                    
+                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+                    <input type="text" placeholder="Senha" id="senhaIpt">
+                    <button onclick="entrar()">Entrar na conta</button>
+                    <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 0;">
+      <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
+      <p >© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
+      <div class="socialMedia">
+          <a href=""><img class="socialMediaImg"src="./assets/icon/Instagram.svg" alt=""></a>
+          <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
+          <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
+     </div>
+  </footer>
+</body>
+<script src="./js/Navbar.js"></script>
+</html>
+
+
+<script>
+
+function entrar() {
+  var emailVar = emailIpt.value
+  var senhaVar = senhaIpt.value;
+
+  if (emailVar == "" || senhaVar == "") {
+    alert("Preencha todos os campos");
+    return false;
+  }
+
+  console.log("FORM LOGIN: ", emailVar);
+  console.log("FORM SENHA: ", senhaVar);
+
+  fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      emailServer: emailVar,
+      senhaServer: senhaVar
+    })
+  })
+  .then(function (resposta) {
+    console.log("ESTOU NO THEN DO entrar()!")
+
+    if (resposta.ok) {
+      console.log(resposta);
+
+      resposta.json().then(json => {
+        console.log(json);
+        console.log(JSON.stringify(json));
+        sessionStorage.EMAIL_USUARIO = json.email;
+        sessionStorage.NOME_USUARIO = json.nome;
+        sessionStorage.ID_USUARIO = json.id;
+        
+
+        setTimeout(function () {
+          window.location = "./Index.html";
+        }, 1000); // apenas para exibir o loading
+      });
+    }
+  })
+  .catch(function (erro) {
+    console.log("Erro ao autenticar:", erro);
+  });
+  
+}
+
+
+
+</script>

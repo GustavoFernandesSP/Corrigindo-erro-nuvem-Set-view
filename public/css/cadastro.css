@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+.background-cadastro{
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    background-image: url(../assets/imgs/image\ 2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0;
+}
+
+.container-cadastro{
+    width: 75%;
+    height: 55%;
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.box-cadastro{
+    margin-left: 50px;
+    width: 60%;
+    height: auto;
+    border-radius: 75px;
+    background-color: #E0F6F9;
+}
+.logo-box-cadastro{
+    width: 100%;
+    height: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.logo-box-cadastro img{
+    width: 150px;
+}
+.form-cadastro{
+    width: 100%;
+    height: 90%;
+    border: red 2px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.form-cadastro h1{
+    font-family: "Viga", sans-serif;
+    color: #176B87;
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+    margin: 20px;
+}
+.form-cadastro input{
+    display: flex;
+    margin: 15px;
+    width: 70%;
+    height: 20px;
+    padding: 14px;
+    border-radius: 50px;
+    border: #A1DCE9 2px solid;
+    color: #176B87;
+    font-family: "Yaldevi", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.form-cadastro input::placeholder{
+    color: #176B87;
+    font-family: "Yaldevi", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+
+}
+.form-cadastro button{
+    width: 43%;
+    height: 55px;
+    
+    margin-top: 50px;
+    /* margin-bottom: 50px; */
+
+    border: none;
+    border-radius: 50px;
+    background-color: #176B87;
+
+    color: white;
+
+    font-family: "Viga", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.form-cadastro button:hover{
+    background-color: #A1DCE9;
+    cursor: pointer;
+ }
+
+.form-cadastro label{
+    margin: 2.5rem;
+    font-family: "Yaldevi", sans-serif ;
+    font-size: 20px;
+    color: #176B87;
+}
+.form-cadastro a{
+    text-decoration: underline;
+    color: #176B87;
+    text-underline-offset: 1px;
+}
+
+.imgLogo:hover{
+    filter: brightness(0) saturate(100%) invert(85%) sepia(80%) saturate(5498%) hue-rotate(170deg) brightness(89%) contrast(106%);
+}
+
+
+@media only screen and (max-width: 1080px) {
+    .box-cadastro{
+        border-radius: 0;
+        width: 100%;
+        margin: 0;
+        width: 100%;
+    }
+
+
+    .form-cadastro button{
+        width: 70%;
+        font-size: 20px;
+    }
+
+    .background-cadastro{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E0F6F9;
+        background-image: none;
+        padding: 0;
+    }
+
+    .footer{
+        bottom: 0;
+    }
+
+    .imgFooter{
+        display: none;
+    }
+
+}

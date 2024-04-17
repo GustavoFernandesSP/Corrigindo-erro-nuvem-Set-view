@@ -1,0 +1,300 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body{
+    background-color: #F0FAFF;
+}
+
+.listaMenuHamburguer{
+    display: none;
+    background-color: #176B87;
+    width: 100%;
+    height: 290px;
+    border-radius: 0px 0px 25px 25px ;
+}
+
+.aLiListaHeaderHambuerguer{
+   color: #17556975;
+   margin: 25px;
+}
+
+.LiListaHeaderHambuerguer{
+    text-align: center;
+    font-family:Yaldevi;
+    font-size:23px;
+    font-weight: 700;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: white;
+    border: 2px solid;
+
+}
+
+
+
+Header{
+    display: flex;
+    width: 100%;
+    height: 54px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.HeaderLogo{
+    margin-left: 100px;
+}
+
+li,a{
+    text-decoration: none;
+    list-style: none;
+}
+
+
+
+
+.listaHeader{
+
+    display: flex;
+    text-decoration: none;
+    color: #176B87;
+    font-family:Yaldevi;
+    font-size:23px;
+    font-weight: 700;
+}
+
+.aLiListaHeader{
+    color: #176B87;
+}
+
+.LiListaHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    height: 45px;
+    width: 177px;
+    margin-right: 100px;
+ }
+
+.LiListaHeader:hover,  aLiListaHeader {
+    color: white;
+    background-color: #176B87;
+}
+
+.DivNavbarHamburguer{
+    display: none;
+}
+
+/* Main */
+
+.divMainFirst{
+    background-color: #F0FAFF;
+    display: flex;
+    width: 90%;
+    height: 900px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.divMainFirstMobal{
+    display: none;
+}
+
+.img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 661px;
+}
+
+/* .imgMainFirst{    
+    position: absolute;
+    width: 52%;
+    height: 661px;
+    margin-left: 36%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("../assets/imgs/image\ 2.png"); 
+    border-radius: 30px;
+} */
+
+.imgMainFirst{
+    z-index: 1;
+    /* position: absolute; */
+    /* position:initial; */
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    /* background-size:contain; */
+    background-position: 0px -300px;
+    background-size:cover;
+    background-image: url("../assets/imgs/image\ 2.png"); 
+    border-radius: 30px;
+}
+
+.text{
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    border-radius: 30px 90px 90px 30px;
+    background-color: #176B87;
+    width: 483px;
+    height: 661px;
+}
+
+.imgVector{
+    /* position: absolute; */
+    z-index: -1;
+    filter: blur(2px);
+    height: fit-content;
+}
+
+.imgMainFirst{
+    display: flex;
+    align-items: center;
+}
+
+.h1ImgmanFirst{
+    /* margin-left: 150px; */
+    font-weight: 300;
+    font-size: 50px;
+    font-family: viga;
+    color: #E0F6F9;
+}
+
+.textDentroDoVetor{
+    position: absolute;
+    align-items: center;
+    width: 601px;
+    height: 350px;
+    /* margin-top: 100px; */
+    margin-left: 100px;
+}
+
+.TextFist{
+    
+    letter-spacing: 5px;
+    font-family: Yaldevi;
+    font-size: 24px;
+    width: 800px;
+    font-weight: 100;
+    color: #E0F6F9;
+}
+
+.DivButonCadastroMain{
+    z-index: 3;
+    width: 250px;
+    height: 60px;
+    background-color: #A1DCE9;
+    margin-top: 100px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.DivButonCadastroMain:hover{
+    background-color: #E0F6F9;
+}
+
+.ParagrafoMainText{
+    color: #176B87;
+    font-family: Yaldevi;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1080px) {
+
+
+    body{
+        background-color: #F0FAFF;
+    }
+
+    Header{
+        display: flex;
+        width: 100%;
+        height: 54px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+
+    .divList{
+        display: none;
+    }
+
+    .HeaderLogo{
+        margin-left: 10px;
+    }
+
+    .DivNavbarHamburguer{
+        display: block;
+        margin-right: 25px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .imgHamburguer{
+        cursor: pointer;
+    }
+
+   .divMainFirst{
+    display: none;
+   }
+
+   .divMainFirstMobal{
+    background-image:url("../assets/imgs/Vector\ \(1\).png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    background-color: #176B87;
+    width: 90%;
+    margin: auto;
+    height: 450px;
+    display: flex;
+    margin-top: 25px;
+    border-radius: 35px;
+   }
+   
+   .DivButonCadastroMain{
+    margin-top: 0%;
+   }
+
+   .textMobileMain{
+    text-align: center;
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 50px;
+   }
+
+   .h2mobileMain{
+        font-family: Viga;
+        color:#F0FAFF;
+        margin-bottom:25px;
+        width: 100%;
+        font-size: 30px;
+   }
+
+   .PMobileMain{
+    font-family: Yaldevi;
+    color:#F0FAFF;
+    margin-bottom:25px;
+    width: 100%;
+    font-size: 20px;
+   }
+
+  }

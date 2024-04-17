@@ -1,0 +1,275 @@
+.img2MainSub{
+    position: absolute;
+    top: 550px;
+}
+
+.mainMeio{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.meioImg{
+    position: absolute;
+    width:600px;
+    /* background-color: red; */
+}
+
+.clasTextsMainMeio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 490px;
+    width: 88%;
+    margin-left: 10%;
+    background-color: #A1DCE9;
+    border-radius: 40px 40px 40px 40px;
+    /* padding: 50px; */
+}
+
+.CamIndexIMG{
+    
+    width: 90%;
+}
+
+.containerMeioTexto{
+    padding-right: 100px;
+    margin-left: 400px;
+    /* background-color: purple; */
+}
+
+.h1MainMeio{
+
+    /* margin-top: 100px; */
+    /* margin-left: 32%; */
+    font-size: 64px;
+    font-family: Viga;
+    color:#176B87;
+}
+
+.pMainMeio{
+    display: flexbox;
+    text-align: justify;
+    margin-top: 10px;
+    /* transform: scaleX(1.35); */
+    /* margin-left: 40%; */
+    font-size: 24px;
+    font-family: Yaldevi;
+    color:#176B87;
+}
+
+.containerEmpresas{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 500px;
+   /* width: 90vw; */
+   /* margin-bottom: 110px; */
+   /* background-color: aquamarine; */
+   position: relative;
+}
+
+.MainEmpresasParceiras{
+    position: absolute;
+    width: 80%;
+    height: 510px;
+    background-color: #E0F6F9;
+    margin-top: 50px;
+    z-index: -1;
+    margin-bottom: 100px;
+    border-radius: 0px 50px 150px 0px;
+}
+
+.h1MainEmpresas{
+    margin-top: 100px;
+    text-align: center;
+    font-size: 64px;
+    font-family: Viga;
+    color: #176B87;
+}
+
+.imgsCadsEmpresas{
+   display: flex;
+   width: 90vw;
+   justify-content: center;
+   
+}
+
+
+.imgDentro{
+    width: 150px;
+}
+
+
+
+.hvr-pulse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    border-radius: 30px;
+    margin-top: 30px;
+    width: 290px;
+    height: 140px;
+    margin-left: 30px;
+    background-color: #A1DCE9;
+    padding: 10px;
+    z-index: 3;
+   
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.img3mianSub{
+   position: absolute;
+   right: 0;
+   top: 1600px;
+   z-index: 1;
+}
+
+
+
+.footer{
+    position: fixed;
+    bottom: 0;
+}
+
+
+
+
+@keyframes hvr-pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  /* .hvr-pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  } */
+  .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+
+@media only screen and (max-width: 1080px) {
+
+    .img2MainSub{
+        display: none;
+    }
+
+    .img3mianSub{
+        display: none;
+    }
+
+    .hvr-pulse:first-child {
+        margin: 25px auto ;
+    }
+
+   
+    .imgsCadsEmpresas{
+        display: block;
+        width: 99%;
+       
+        
+     }
+
+     .containerMeioTexto{
+        margin: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+     }
+
+     .pMainMeio{
+        position: relative;
+        text-align: center;
+        font-size: 15px;
+        font-family: Yaldevi;
+        color:#176B87;
+    }
+
+    .h1MainMeio{
+        text-align: center;
+        font-size: 30px;
+        font-family: Viga;
+        color:#176B87;
+    }
+
+    .clasTextsMainMeio{
+        
+        display: flex;
+        height: 300px;
+        margin: 20px 0;
+        width: 100%;
+    }
+
+
+    .containerEmpresas{
+            display: flex;
+            margin-bottom: 150px;
+    }
+
+    .h1MainEmpresas{
+            margin-top: 150px;
+            font-size: 30px;
+    }
+
+    
+
+     .hvr-pulse{
+        border-radius: 30px;
+        margin-top: 30px;
+        width: 90%;
+        height: 90px;
+        margin: 25px auto ;
+        background-color: #A1DCE9;
+        padding: 10px;
+    }
+
+    footer{
+        margin-top: 25px;
+    }
+
+    .CamIndexIMG{
+    display: none;
+    }
+
+
+
+   .imgFooter{
+    display: none;
+   }
+
+   .textMobileMain{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+   }
+
+   .DivButonCadastroMain{
+    width: 100%;
+   }
+
+}

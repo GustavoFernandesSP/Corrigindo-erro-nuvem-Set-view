@@ -1,0 +1,240 @@
+.main{
+    margin-bottom: 100px;
+}
+.historia{
+    /* width: 100%; */
+    display: flex;
+    
+    flex-direction: row;
+    /* height: 800px; */
+    padding: 90px;
+}
+
+
+.historiaTexto{
+    justify-content: center;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+}
+.livroImg{
+    width: 584px;
+    height: 515px;
+}
+
+.h1Historia{
+    font-family: Viga;
+    color: #176B87;
+    font-size: 55px;
+}
+
+.pHistoria{
+    color: #176B87;
+    font-family: Yaldevi;
+    font-size: 14px;
+}
+
+.imgHistoria{
+    width: 75%;
+    margin: auto;
+}
+
+.retanguloSup{
+    z-index: -1;
+    position: absolute;
+    top: 100px;
+    right:0vh;
+}
+
+.img1{
+    z-index: -1;
+    position: absolute;
+    top: 50px;
+    left: -100px;
+}
+
+.img2RetanguloHistoria{
+    top: 0;
+}
+
+.Integrantes{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.linha1{
+   
+    display: flex;
+}
+
+.linha2{
+    display: flex;
+}
+
+.h1Fundadores{
+    text-align: center;
+}
+
+.Integrante{
+    width: 332px;
+    height: 250px;
+    background-color: #A1DCE9;
+    margin: 50px;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+}
+.ClasAbsoluteIntegrante{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    /* width: 90vw;      */
+}
+
+.h1Fundadores{
+    font-family: Viga;
+    color: #176B87;
+    font-size: 64px;
+}
+
+.imgAbsoluteFonder{
+    margin-left: -100px;
+}
+
+.textFonders{
+    margin-left: 30px;
+}
+
+.h1Founder{
+font-family: Viga;
+color: #176B87;
+font-size: 24px;
+}
+
+.PFounders{
+color: #176B87;
+font-family: Yaldevi;
+font-size: 14px;
+}
+
+.historiaMobal{
+    display: none;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+}
+@media only screen and (max-width: 1080px) {
+
+    .retanguloSup{
+        display: none;
+    }
+
+    .img1{
+        display: none;
+    }
+
+    .img2RetanguloHistoria{
+        display: none;
+    }
+
+    .historia{
+        display: none;
+    }
+
+    .historiaMobal{
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        background-color: #176B87;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+
+    .pHistoria{
+        width: 70%;
+        font-size: 14px;
+        color: #F0FAFF;
+    }
+
+    .h1Historia{
+        width: 70%;
+        font-size: 40px;
+        color: #F0FAFF;
+    }
+
+
+    .Integrantes{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        /* margin: auto; */
+        width:100% ;
+    }
+    
+    .linha1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .linha2{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .h1Fundadores{
+        text-align: center;
+    }
+    
+    .Integrante{
+        width: 80%;
+        height: 250px;
+        background-color: #A1DCE9;
+        margin: 50px;
+        border-radius: 25px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ClasAbsoluteIntegrante{
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        height: 250px;
+    }
+
+    .imgAbsoluteFonder{
+        margin-left: -30px;
+    }
+    
+    .textFonders{
+        margin-left: 30px;
+    }
+
+    .h1Fundadores{
+        font-family: Viga;
+        color: #176B87;
+        font-size: 50px;
+        }
+
+        .imgFooter{
+            display: none;
+           }
+}

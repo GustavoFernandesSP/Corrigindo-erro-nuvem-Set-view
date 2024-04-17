@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 70vh;
+    border-radius: 0px 25px 25px 0px;
+    background-color: #176B87;
+}
+
+.lista{
+    width: 100%;
+    height: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listaHeader {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 70px;
+}
+
+img {
+    display: block;
+}
