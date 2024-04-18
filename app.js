@@ -4,7 +4,6 @@ process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 
 var app = express();
 
@@ -28,7 +27,7 @@ app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
 
-app.listen(PORTA, function () {
+app.listen(3333, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
     Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n
     \t\tSe "desenvolvimento", você está se conectando ao banco LOCAL (MySQL Workbench). \n
