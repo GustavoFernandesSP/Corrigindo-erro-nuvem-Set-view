@@ -36,7 +36,6 @@ app.use("/empresas", empresasRouter);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-
 // Inicialização do servidor
 app.listen(3333, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:3333 \n
