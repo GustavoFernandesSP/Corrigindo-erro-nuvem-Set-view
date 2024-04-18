@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+   
+
+    <main class="background-cadastro">
+        <div class="container-cadastro">
+            <div class="box-cadastro">
+                <div class="logo-box-cadastro">
+                    <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
+                </div>
+                <div class="form-cadastro" >
+
+                    <h1>Criar sua conta</h1>
+                    
+                    <input type="text" placeholder="Nome" id="nomeIpt">
+                    <input type="text" placeholder="Sobrenome" id="sobreNomeIpt">
+                    <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
+                    <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
+                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+                    <input type="text" placeholder="Senha" id="senhaIpt">
+                    <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
+                    <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
+                    <label>Já possui uma conta ? <a href="./Entrar.html">Entre por aqui</a></label>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 0;">
+        <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
+      <p >© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
+      <div class="socialMedia">
+          <a href=""><img class="socialMediaImg"src="./assets/icon/Instagram.svg" alt=""></a>
+          <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
+          <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
+     </div>
+    </footer>
+</body>
+
+
+</html>
+
+<script type="module" src="js/Navbar.js"></script>
+
+<script>
+
+function verificarNumeros(nome, sobrenome) {
+    const regexNumeros = /\d/;
+    return regexNumeros.test(nome) || regexNumeros.test(sobrenome);
+}
+
+function verificarFormatoEmail(email) {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email);
+}
+
+function verificarCNPJ(cnpj) {
+    return cnpj.length === 14;
+}
+
+function cadastrar(){
+var nomeVar = nomeIpt.value;
+var sobrenomeVar = sobreNomeIpt.value;
+var nomeEmpresa = nomeEmpresaIpt.value;
+var cnpjVar = cnpjIpt.value;
+var emailVar = emailIpt.value;
+var senhaVar = senhaIpt.value;
+var senhaConfirmVar = senhaConfirm.value;
+
+if (verificarNumeros(nomeVar, sobrenomeVar)) {
+    alert("O nome e sobrenome não podem conter números.");
+} else if ( !verificarCNPJ(cnpjVar)) {
+    alert("Por favor, insira um CNPJ válido com 14 dígitos."); 
+} else if (!verificarFormatoEmail(emailVar)) {
+   alert("Por favor, insira um endereço de email válido.");
+} else if (senhaVar !== senhaConfirmVar) {
+    alert("As senhas digitadas não correspondem. Por favor, verifique.");
+} else {
+    console.log("entrando no fetch")
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer: nomeVar,
+            sobrenomeServer: sobrenomeVar,
+            nomeEmpresaServer: nomeEmpresa,
+            cnpjServer: cnpjVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            setTimeout(() => {
+                window.location = "./Entrar.html";
+            }, 1000);
+        } else {
+            alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
+        }
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+return false;
+
+}
+
+
+</script>
