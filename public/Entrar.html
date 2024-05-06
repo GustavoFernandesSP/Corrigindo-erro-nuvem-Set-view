@@ -1,104 +1,208 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/footer.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="shortcut icon" href="./assets/Vector Security Wings.png" type="image/x-icon">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-    
 
 
-    <div class="background-login">
-        <div class="container-login">
-            <div class="box-login">
-                  <div class="logo-box-cadastro">
-                    <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
-                </div>
-                <div class="form-login" action="">
-                    <h1>Criar sua conta</h1>
-                    
-                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
-                    <input type="text" placeholder="Senha" id="senhaIpt">
-                    <button onclick="entrar()">Entrar na conta</button>
-                    <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
 
-                </div>
-            </div>
+  <div class="background-login">
+    <div class="container-login">
+      <div class="box-login">
+        <div class="logo-box-cadastro">
+          <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
         </div>
-    </div>
+        <div class="form-login" action="">
+          <h1>Login</h1>
 
-    <footer style="margin-top: 0;">
-      <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
-      <p >© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
-      <div class="socialMedia">
-          <a href=""><img class="socialMediaImg"src="./assets/icon/Instagram.svg" alt=""></a>
-          <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
-          <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
-     </div>
+          <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+          <input type="password" placeholder="Senha" id="senhaIpt">
+          <button onclick="entrar()">Entrar na conta</button>
+          <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer style="margin-top: 0;">
+    <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
+    <p>© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
+    <div class="socialMedia">
+      <a href=""><img class="socialMediaImg" src="./assets/icon/Instagram.svg" alt=""></a>
+      <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
+      <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
+    </div>
   </footer>
 </body>
 <script src="./js/Navbar.js"></script>
+
 </html>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
 
-function entrar() {
-  var emailVar = emailIpt.value
-  var senhaVar = senhaIpt.value;
 
-  if (emailVar == "" || senhaVar == "") {
-    alert("Preencha todos os campos");
-    return false;
+  function entrar() {
+    var emailVar = emailIpt.value
+    var senhaVar = senhaIpt.value;
+
+    if (emailVar == "" || senhaVar == "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops...',
+        text: `preencha todos os campos`,
+      })
+      return;
+    }
+
+
+    fetch("/usuario/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.FK_EMPRESA = json.fkEmpresa;
+            sessionStorage.IS_ADMIN = json.isAdmin;
+            sessionStorage.IS_MANAGER = json.isManager;
+
+            var isAdmin = sessionStorage.IS_ADMIN;
+            var isManager = sessionStorage.IS_MANAGER;
+            console.log(isManager,"aaaaaaaaaaa é manager")
+            var nome = sessionStorage.NOME_USUARIO;
+
+
+            if(isManager == 1){
+              Swal.fire({
+                icon: 'success',
+                title: 'Tudo certo!',
+                text: `Olá ${nome}, estamos te redirecionando para a página de gerenciamento das empresas.`,
+                showConfirmButton: false,
+                didOpen: () => {Swal.showLoading();}
+
+              });
+
+            setTimeout(function () {window.location = "./Dashboards/managerAcessPages/ManagerPage.html";}, 4000);
+
+              return;
+            }
+
+            if (isAdmin == 1) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Tudo certo!',
+                text: `Olá ${nome}, estamos te redirecionando para a página de ADMIN.`,
+                showConfirmButton: false,
+                didOpen: () => {
+                  Swal.showLoading();
+
+                }
+
+              });
+              findEmpresaById()
+              setTimeout(function () {
+
+                window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
+              }, 4000);
+
+            } else if (isAdmin == 0) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Tudo certo!',
+                text: `Olá ${nome}, estamos te redirecionando para a página de usuários`,
+                showConfirmButton: false,
+                didOpen: () => {
+                  Swal.showLoading();
+
+                }
+              });
+              findEmpresaById()
+              setTimeout(function () {window.location = "./Dashboards/userAcessPages/PerfilUser.html";}, 3000);
+            }
+
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocorreu um erro! Credenciais inexistentes ou incorretas.',
+          })
+        }
+      })
+      .catch(function (erro) {
+        console.log("Erro ao autenticar:", erro);
+      });
+
+
+
   }
 
-  console.log("FORM LOGIN: ", emailVar);
-  console.log("FORM SENHA: ", senhaVar);
+  function findEmpresaById() {
+    console.log(sessionStorage.FK_EMPRESA)
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
 
-  fetch("/usuarios/autenticar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      emailServer: emailVar,
-      senhaServer: senhaVar
+    fetch("/usuario/findEmpresaById", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idEmpresaServer: idEmpresaVar
+      })
     })
-  })
-  .then(function (resposta) {
-    console.log("ESTOU NO THEN DO entrar()!")
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
 
-    if (resposta.ok) {
-      console.log(resposta);
+        if (resposta.ok) {
+          console.log(resposta);
 
-      resposta.json().then(json => {
-        console.log(json);
-        console.log(JSON.stringify(json));
-        sessionStorage.EMAIL_USUARIO = json.email;
-        sessionStorage.NOME_USUARIO = json.nome;
-        sessionStorage.ID_USUARIO = json.id;
-        
+          resposta.json().then(json => {
+            console.log(JSON.stringify(json));
+            sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+          });
 
-        setTimeout(function () {
-          window.location = "./Index.html";
-        }, 1000); // apenas para exibir o loading
-      });
-    }
-  })
-  .catch(function (erro) {
-    console.log("Erro ao autenticar:", erro);
-  });
-  
-}
+
+
+        }
+      })
+  }
+
+
+
 
 
 

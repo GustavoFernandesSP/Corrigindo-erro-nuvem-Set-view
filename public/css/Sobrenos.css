@@ -1,6 +1,12 @@
 .main{
     margin-bottom: 100px;
 }
+
+body{
+    scrollbar-width: thin;          
+    scrollbar-color: #176B87 #E0F6F9 ; 
+}
+
 .historia{
     /* width: 100%; */
     display: flex;

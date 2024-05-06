@@ -10,6 +10,12 @@
     align-items: center;
 }
 
+
+body{
+    scrollbar-width: thin;          
+    scrollbar-color: #176B87 #E0F6F9 ; 
+}
+
 .meioImg{
     position: absolute;
     width:600px;

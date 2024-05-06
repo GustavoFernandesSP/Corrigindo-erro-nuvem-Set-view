@@ -1,27 +1,49 @@
-var database = require("../database/config");
+var database = require("../database/config")
 
-function buscarPorId(id) {
-  var query = `select * from empresa where id = '${id}'`;
-
-  return database.executar(query);
+function autenticar(email, senha) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    var instrucao = `
+        SELECT idEmpresa, nome, email FROM Empresa WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
 }
 
-function listar() {
-  var query = `select * from empresa`;
+// Coloque os mesmos parâmetros aqui. Vá para a var instrucao
+function cadastrar(nomeEmpresa, cnpj, email, telefone, cidade, bairro, uf, rua, cep, comp, senha) {
+    var instrucao = `
+        INSERT INTO Empresa (nome, cnpj, email, telefone, senha) VALUES ('${nomeEmpresa}', '${cnpj}', '${email}', '${telefone}', '${senha}');
+    `;
 
-  return database.executar(query);
+    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    return database.executar(instrucao)
+        .then(resultado => {
+            // Verifica se houve inserção bem-sucedida
+            if (resultado.affectedRows > 0) {
+                // ID da empresa inserida
+                var idEmpresaInserida = resultado.insertId;
+
+                // Agora, insira o endereço com o ID da empresa correspondente
+                var instrucaoEndereco = `
+                    INSERT INTO Endereco (cidade, bairro, uf, rua, cep, complemento, fkEmpresa) 
+                    VALUES ('${cidade}', '${bairro}', '${uf}', '${rua}', '${cep}', '${comp}', ${idEmpresaInserida});
+                `;
+
+                console.log("Executando a instrução SQL do Endereço: \n" + instrucaoEndereco);
+
+                return database.executar(instrucaoEndereco);
+            } else {
+                throw new Error("Não foi possível inserir a empresa.");
+            }
+        });
 }
 
-function buscarPorCnpj(cnpj) {
-  var query = `select * from empresa where cnpj = '${cnpj}'`;
+module.exports = {
+    cadastrar
+};
 
-  return database.executar(query);
-}
-
-function cadastrar(razaoSocial, cnpj) {
-  var query = `insert into empresa (razao_social, cnpj) values ('${razaoSocial}', '${cnpj}')`;
-
-  return database.executar(query);
-}
-
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = {
+    autenticar,
+    cadastrar
+};

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de usuários</title>
+    <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
+</head>
+
+<body onload="listarFunc()">
+
+    <header>
+
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="contentContainer">
+
+            <div class="containerEsquerdo">
+
+                <div class="titulo" id="titulo">
+
+                    <h1>Tela de Cadastros</h1>
+                </div>
+
+
+                <!-- Botões com todas as opções -->
+                <div class="contanierBt" id="btGerais">
+                    <p class="texto">
+                        Bem-vindo à tela de edição de cadastro de usuários da empresa <span id="nomeEmpresa"></span>.
+                        Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
+                    </p>
+                    <button class="botao" id="btCadastrar">
+
+                        <div class="contentBtn">
+
+                            <img src="./assetsDashboard/CadFunc.svg" alt="">
+                            <p class="textoBtn">
+                                Cadastrar <br>
+                                Usuário
+                            </p>
+                        </div>
+                    </button>
+                </div>
+
+
+                <!-- Tela de cadastro -->
+                <div class="containerInfo" id="cadFuncContainer">
+
+
+                    <div class="inputContainerCad">
+                        <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
+                        <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc">
+                        <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
+                        <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
+                        <input class="inputInfo" type="password" placeholder="Confirmar Senha"
+                            id="senhaFuncConfirm"><br>
+                        <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
+                    </div>
+
+                </div>
+
+                <!-- Tela de Editar Usuário -->
+                <div class="containerInfo" id="editFuncContainer">
+
+
+                    <div class="inputContainerEdit">
+                        <input class="inputInfo" type="text" placeholder="Email" id="novoEmailIpt">
+                        <input class="inputInfo" type="text" placeholder="Senha" id="novaSenhaIpt">
+                        <input class="inputInfo" type="text" placeholder="Confirmar Senha">
+                        <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
+                    </div>
+
+                </div>
+
+                <div class="containerInfo" id="excFuncContainer">
+
+                    <div class="inputContainerExc">
+                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
+                        <button id="excluirBt" class="botaoInfo">Excluir</button>
+                    </div>
+
+                </div>
+
+
+
+                <button id="voltar" class="voltarBt">Voltar</button>
+
+
+
+
+
+            </div>
+
+            <div class="containerDireito">
+                <p class="titulo" style="font-size: 25px;">
+                    Lista de Usuários da empresa <span id="nomeEmpresaLeft" style="font-weight: bold;"></span>
+                </p>
+
+                <div class="listContainer" id="listaUser">
+                </div>
+            </div>
+
+        </div>
+
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    var nomeEmpresaVar = sessionStorage.NOME_EMPRESA;
+    document.getElementById("nomeEmpresa").innerHTML = nomeEmpresaVar;
+    nomeEmpresaLeft.innerHTML = `${nomeEmpresaVar}`; 
+
+
+    console.log(nomeEmpresaVar)
+    var userIdGlobal = "";
+    var userNameGlobal = "";
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var btCadastrar = document.getElementById("btCadastrar");
+        var btEditar = document.getElementById("btEditar");
+        var btExcluir = document.getElementById("btExcluir");
+        var voltar = document.getElementById("voltar");
+
+        btCadastrar.addEventListener("click", function () {
+
+            btGerais.style.display = "none";
+
+            voltar.style.display = "flex";
+            cadFuncContainer.style.display = "flex";
+
+            titulo.style.textAlign = "left"
+            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+
+        });
+
+        voltar.addEventListener("click", function () {
+            btGerais.style.display = "flex";
+            voltar.style.display = "none";
+            editFuncContainer.style.display = "none";
+            cadFuncContainer.style.display = "none";
+            excFuncContainer.style.display = "none";
+            titulo.style.textAlign = "center"
+            titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
+
+        });
+
+    });
+
+    function cadastrarFunc() {
+        var nomeVar = nomeFunc.value;
+        var emailVar = emailFunc.value;
+        var senhaVar = senhaFunc.value;
+        var senhaConfirmVar = senhaFuncConfirm.value;
+        var isAdminVar = 0;
+        var idEmpresaVar = sessionStorage.FK_EMPRESA;
+        var cpfVar = cpfFunc.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            Swal.fire(
+                "Erro",
+                "preencha todos os campos para realizar o cadastro de um novo funcionário",
+                "error"
+            )
+            return;
+        }
+
+        if (cpfVar.length < 11) {
+            Swal.fire(
+                "Erro",
+                "O cpf tem menos de 11 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (!emailVar.includes("@") && !emailVar.includes(".")) {
+            Swal.fire(
+                "Erro",
+                "O email deve conter '@' e '.', como neste exemplo: email@example.com ",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar.length < 6 && senhaConfirmVar.length < 6) {
+            Swal.fire(
+                "Erro",
+                "A senha deve conter no minímo 6 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar != senhaConfirmVar) {
+            Swal.fire(
+                "Erro",
+                "A confirmação de senha não coincide com a senha.",
+                "error"
+            )
+            return;
+        }
+
+
+        fetch("/usuario/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idEmpresaServer: idEmpresaVar,
+                isAdminServer: isAdminVar,
+                cpfServer: cpfVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // Exibindo Sweet Alert de sucesso
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário cadastrado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else if (resposta.status == 500) {
+                    Swal.fire(
+                        "Erro",
+                        "O cpf ou email já estão em uso",
+                        "error"
+                    ).then(() => {
+                        window.location.reload();
+                    })
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+    function deletarFunc(idVar) {
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você excluirá permanentemente o usuário. Clique em "Cancelar" para cancelar a operação.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, exlcuir usuário!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/usuario/deletarFunc/${idVar}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'Usuário excluído com sucesso!',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+            }
+        })
+
+    }
+
+
+
+    function preEdit(idUserVar, nome) {
+        userIdGlobal = idUserVar;
+        userNameGlobal = nome;
+        funcEditar()
+    }
+
+
+
+    function editarFunc() {
+        var idUser = userIdGlobal;
+        var novoEmailVar = novoEmailIpt.value;
+        var novaSenhaVar = novaSenhaIpt.value;
+
+
+        fetch("/usuario/editarFunc", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUser,
+                novoEmailServer: novoEmailVar,
+                novaSenhaServer: novaSenhaVar
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário editado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+
+                } else if (resposta.status == 500) {
+                    Swal.fire(
+                        'erro!',
+                        'Erro ao editar usuário, cpf já está em uso ou email já cadastrado ',
+                        'error'
+                    )
+                    return;
+                }
+            })
+            .catch(function (resposta) {
+                console.log(resposta)
+            });
+    }
+
+
+    function listarFunc() {
+        var idEmpresaVar = sessionStorage.FK_EMPRESA;
+
+
+        fetch("/usuario/listarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarFunc()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var usuario = resposta[i];
+
+                        var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
+
+                        listaUser.innerHTML += `
+                        
+                        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Permissão: ${categoria} </span>
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarFunc(${usuario.idUsuario})"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')"><img src="../assetsDashboard/Lapis.svg">Editar</button>
+                            </div>
+                        </div>
+                    `;
+
+                    }
+
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "teste");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function funcEditar() {
+
+        btGerais.style.display = "none";
+
+        voltar.style.display = "flex";
+        editFuncContainer.style.display = "flex";
+
+        titulo.style.textAlign = "center"
+        titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
+        paragrafName.style.textAlign = "center"
+
+
+    };
+
+
+
+
+
+
+</script>

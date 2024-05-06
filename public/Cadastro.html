@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/cadastro.css">
     <link rel="stylesheet" href="./css/footer.css">
-
+    <link rel="shortcut icon" href="./assets/Vector Security Wings.png" type="image/x-icon">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 
 <body>
 
-   
+
 
     <main class="background-cadastro">
         <div class="container-cadastro">
@@ -27,20 +27,102 @@
                 <div class="logo-box-cadastro">
                     <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
                 </div>
-                <div class="form-cadastro" >
+                <div class="form-cadastro">
 
                     <h1>Criar sua conta</h1>
-                    
-                    <input type="text" placeholder="Nome" id="nomeIpt">
-                    <input type="text" placeholder="Sobrenome" id="sobreNomeIpt">
-                    <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
-                    <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
-                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
-                    <input type="text" placeholder="Senha" id="senhaIpt">
-                    <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
+
+                    <div class="inputContent">
+                        <span>Nome da empresa</span>
+                        <input type="text" placeholder="" id="nomeEmpresaIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>CNPJ</span>
+                        <input type="text" placeholder="" id="cnpjIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Email</span>
+                        <input type="text" placeholder="" id="emailIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Telefone (DD + o número)</span>
+                        <input type="text" placeholder="" id="telefoneIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Cidade</span>
+                        <input type="text" placeholder="" id="cidadeIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Bairro</span>
+                        <input type="text" placeholder="" id="bairroIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Selecione o estado no qual sua empresa se localiza</span>
+                        <select name="uf" id="valorUf">
+                            <option value="" disabled selected>Escolha uma opção</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Rua</span>
+                        <input type="text" placeholder="" id="ruaIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>CEP</span>
+                        <input type="text" placeholder="" id="cepIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Número</span>
+                        <input type="text" placeholder="" id="compIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Senha</span>
+                        <input type="password" placeholder="" id="senhaIpt">
+                    </div>
+
+                    <div class="inputContent">
+                        <span>Confirme sua senha</span>
+                        <input type="password" placeholder="" id="senhaConfirm">
+                    </div>
+
                     <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
                     <label>Já possui uma conta ? <a href="./Entrar.html">Entre por aqui</a></label>
-                    
+
                 </div>
             </div>
         </div>
@@ -48,12 +130,12 @@
 
     <footer style="margin-top: 0;">
         <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
-      <p >© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
-      <div class="socialMedia">
-          <a href=""><img class="socialMediaImg"src="./assets/icon/Instagram.svg" alt=""></a>
-          <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
-          <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
-     </div>
+        <p>© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
+        <div class="socialMedia">
+            <a href=""><img class="socialMediaImg" src="./assets/icon/Instagram.svg" alt=""></a>
+            <a href=""><img class="socialMediaImg" src="./assets//icon/Github.svg" alt=""></a>
+            <a href=""><img class="socialMediaImg" src="./assets/icon/Email.svg" alt=""> </a>
+        </div>
     </footer>
 </body>
 
@@ -61,73 +143,175 @@
 </html>
 
 <script type="module" src="js/Navbar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 <script>
 
-function verificarNumeros(nome, sobrenome) {
-    const regexNumeros = /\d/;
-    return regexNumeros.test(nome) || regexNumeros.test(sobrenome);
-}
+    function cadastrar() {
 
-function verificarFormatoEmail(email) {
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regexEmail.test(email);
-}
+        var nomeEmpresaVar = nomeEmpresaIpt.value;
+        var cnpjVar = cnpjIpt.value;
+        var emailVar = emailIpt.value;
+        var telefoneVar = telefoneIpt.value;
+        var cidadeVar = cidadeIpt.value;
+        var bairroVar = bairroIpt.value;
+        var ufVar = valorUf.value;
+        var ruaVar = ruaIpt.value
+        var cepVar = cepIpt.value
+        var compVar = compIpt.value
+        var senhaVar = senhaIpt.value;
+        var senhaConfirmVar = senhaConfirm.value;
+        var regexNumber = /\d/
 
-function verificarCNPJ(cnpj) {
-    return cnpj.length === 14;
-}
 
-function cadastrar(){
-var nomeVar = nomeIpt.value;
-var sobrenomeVar = sobreNomeIpt.value;
-var nomeEmpresa = nomeEmpresaIpt.value;
-var cnpjVar = cnpjIpt.value;
-var emailVar = emailIpt.value;
-var senhaVar = senhaIpt.value;
-var senhaConfirmVar = senhaConfirm.value;
 
-if (verificarNumeros(nomeVar, sobrenomeVar)) {
-    alert("O nome e sobrenome não podem conter números.");
-} else if ( !verificarCNPJ(cnpjVar)) {
-    alert("Por favor, insira um CNPJ válido com 14 dígitos."); 
-} else if (!verificarFormatoEmail(emailVar)) {
-   alert("Por favor, insira um endereço de email válido.");
-} else if (senhaVar !== senhaConfirmVar) {
-    alert("As senhas digitadas não correspondem. Por favor, verifique.");
-} else {
-    console.log("entrando no fetch")
-    fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nomeServer: nomeVar,
-            sobrenomeServer: sobrenomeVar,
-            nomeEmpresaServer: nomeEmpresa,
-            cnpjServer: cnpjVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar
-        }),
-    })
-    .then(function (resposta) {
-        if (resposta.ok) {
-            setTimeout(() => {
-                window.location = "./Entrar.html";
-            }, 1000);
+        if (nomeEmpresaVar == "" || cnpjVar == "" || emailVar == "" || telefoneVar == "" || cidadeVar == "" || bairroVar == "" || ufVar == "" || ruaVar == "" || cepVar == "" || compVar == "" || senhaVar == "" || senhaConfirmVar == "") {
+            Swal.fire(
+                "Ops...",
+                "Preencha todos os campos para cadastrar sua empresa",
+                "error"
+            )
+        } else if (cnpjVar.length !== 14) {
+            Swal.fire(
+                "Ops...",
+                "CNPJ deve conter apenas 14 dígitos",
+                "error"
+            )
+
+        } else if (!emailVar.includes("@") || !emailVar.includes(".")) {
+            Swal.fire(
+                "Ops...",
+                "O email deve conter '@' e '.' assim como no exemplo a seguir emailexample@example.com",
+                "error"
+            )
+        } else if (emailVar.length < 7) {
+            Swal.fire(
+                "Ops...",
+                "Email muito curto, o endereço de email deve conter 8 caracteres"
+            )
+        } else if (telefoneVar.length !== 11) {
+            Swal.fire(
+                "Ops",
+                "O número de telefone para contato deve conter 11 dígitos (DD + 9 dígitos)",
+                "error"
+            )
+        } else if (cepVar.length != 8) {
+            Swal.fire(
+                "Ops",
+                "O CEP deve contem apenas 8 dígitos",
+                "error"
+            )
+        } else if (cidadeVar < 3) {
+            Swal.fire(
+                "Ops",
+                "O nome da cidade é muito curto",
+                "error"
+            )
+        } else if (bairroVar.length < 3) {
+            Swal.fire(
+                "Ops",
+                "O nome do bairro é muito curto",
+                "error"
+            )
+
+        } else if (ruaVar.length < 3) {
+            Swal.fire(
+                "Ops",
+                "O nome da rua é muito curto",
+                "error"
+            )
+
+        } else if (regexNumber.test(cidadeVar)) {
+            Swal.fire(
+                "Ops",
+                "Não deve conter números no campo cidade utilize o campo número para preecher com mais exatidão o seu endereço",
+                "error"
+            )
+
+        } else if (regexNumber.test(ruaVar)) {
+            Swal.fire(
+                "Ops",
+                "Não deve conter números no campo rua utilize o campo número para preecher com mais exatidão o seu endereço",
+                "error"
+            )
+        } else if (regexNumber.test(bairroVar)) {
+            Swal.fire(
+                "Ops",
+                "Não deve conter números no campo bairro utilize o campo número para preecher com mais exatidão o seu endereço",
+                "error"
+            )
+        } else if (senhaVar.length < 6) {
+            Swal.fire(
+                "Ops",
+                "Senha muito curta",
+                "error"
+            )
+        } else if (senhaVar != senhaConfirmVar) {
+            Swal.fire(
+                "Ops",
+                "As senhas não se coincidem",
+                "error"
+            )
         } else {
-            alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
+
+            console.log("entrando no fetch")
+            fetch("/empresa/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeEmpresaServer: nomeEmpresaVar,
+                    cnpjServer: cnpjVar,
+                    emailServer: emailVar,
+                    telefoneServer: telefoneVar,
+                    cidadeServer: cidadeVar,
+                    bairroServer: bairroVar,
+                    ufServer: ufVar,
+                    ruaServer: ruaVar,
+                    cepServer: cepVar,
+                    compServer: compVar,
+                    senhaServer: senhaVar
+                }),
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        Swal.fire(
+                            "Sucesso",
+                            "Sua empresa foi cadastrada com sucesso, entre em contato via email para estabelecer quem serão seus admin",
+                            "success"
+                        )
+                        setTimeout(() => {
+                            window.location = "./Entrar.html"
+                        }, 5000);
+
+                    } else {
+                        Swal.fire(
+                            "Ops... ocorreu um erro",
+                            "Não foi possível cadastrar sua empresa, CNPJ/Email já cadastrados",
+                            "error"
+                        )
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+
+
+            return false;
+
         }
-    })
-    .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-    });
-}
 
-return false;
 
-}
+
+    }
+
+
+
+
+
 
 
 </script>

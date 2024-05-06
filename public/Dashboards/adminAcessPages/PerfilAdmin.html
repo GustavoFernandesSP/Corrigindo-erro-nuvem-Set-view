@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../cssDashboard/dashboardUser.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <header>
+
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <li><a href="./PerfilAdmin.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <main>
+        <div class="contentContainer">
+            <div class="containerMeio">
+                <img src="../../assets/imgs/image 2.png" alt="">
+
+                <div class="containerInfo">
+                    <h1 class="titulo"> Olá, <span id="sayHelloForName"></span></h1>
+
+                    <span class="labelInfo">Nome:</span>
+                    <div class="infosBg">
+                        <span class="info" id="nomeUser">Fulano</span>
+                    </div>
+
+
+
+                    <span class="labelInfo">E-mail:</span>
+                    <div class="infosBg">
+                        <span class="info" id="emailUser">fulano.de@tal.com</span>
+                    </div>
+
+                    <span class="labelInfo">Nome da empresa:</span>
+                    <div class="infosBg">
+                        <span class="info" id="empresaUser">Funilaria do Fulano</span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
+
+
+<script>
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    var empresa = sessionStorage.NOME_EMPRESA;
+    console.log(empresa)
+
+    sayHelloForName.innerHTML = `${nome}`;
+    nomeUser.innerHTML = `${nome}`;
+    emailUser.innerHTML = `${email}`;
+    empresaUser.innerHTML = `${empresa}`
+
+
+</script>

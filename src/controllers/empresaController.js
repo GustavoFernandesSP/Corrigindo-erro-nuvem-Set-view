@@ -1,47 +1,96 @@
 var empresaModel = require("../models/empresaModel");
+var aquarioModel = require("../models/aquarioModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
+function autenticar(req, res) {
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
 
-function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
+        empresaModel.autenticar(email, senha)
+            .then(
+                function (resultadoAutenticar) {
+                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
-function buscarPorId(req, res) {
-  var id = req.params.id;
+                    if (resultadoAutenticar.length == 1) {
+                        console.log(resultadoAutenticar);
 
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+                        empresaModel.autenticar(email, senha)
+                            .then((resultadoAutenticar) => {
+                                if (resultadoAutenticar.length > 0) {
+                                    res.json({
+                                        id: resultadoAutenticar[0].id,
+                                        email: resultadoAutenticar[0].email,
+                                        nome: resultadoAutenticar[0].nome,
+                                        senha: resultadoAutenticar[0].senha
+
+                                    });
+                                } else {
+                                    res.status(204).json({ aquarios: [] });
+                                }
+                            })
+                    } else if (resultadoAutenticar.length == 0) {
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    } else {
+                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+    var nomeEmpresa = req.body.nomeEmpresaServer;
+    var cnpj = req.body.cnpjServer;
+    var email = req.body.emailServer;
+    var telefone = req.body.telefoneServer;
+    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
+    var uf = req.body.ufServer;
+    var rua = req.body.ruaServer;
+    var cep = req.body.cepServer;
+    var comp = req.body.compServer;
+    var senha = req.body.senhaServer;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    if (resultado.length > 0) {
-      res
-        .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
-    } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
-        res.status(201).json(resultado);
-      });
-    }
-  });
+    console.log("entrando no then da controller usuario")
+
+    // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
+    empresaModel.cadastrar(nomeEmpresa, cnpj, email, telefone,cidade,bairro,uf,rua,cep,comp,senha)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
+
+
+
+
+
 module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
-  cadastrar,
-  listar,
-};
+    autenticar,
+    cadastrar,
+    
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard user</title>
+    <link rel="stylesheet" href="../cssDashboard/managerPage.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+</head>
+
+<body onload="listarEmpresa()">
+
+    <header>
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li> -->
+
+                <li><a href="./ManagerPage.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"></a></li>
+                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <main>
+        <div class="contentContainer">
+            <div class="containerMeio">
+                <div class="containerTitle">
+                    <h1 class="titulo">Selecione a empresa</h1>
+
+                    <div class="icons">
+                        <input type="text" class="inputPesquisa" id="searchIpt" onkeydown="checkBackspace(event)">
+                        <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg"alt=""></button>
+                        <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>
+                    </div>
+                </div>
+
+                <div class="containerInfo" id="listaEmpresas">
+
+
+
+                </div>
+
+
+
+                <div class="containerInfo hide" id="listaEmpresasPesquisadas">
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+
+
+    var arrayEmpresaGloba = [];
+
+    function saveIdAndLocation(idEmpresa, nomeEmpresa) {
+
+        sessionStorage.ID_EMPRESA_SALVO = idEmpresa;
+        sessionStorage.NOME_DA_EMPRESA_SALVO = nomeEmpresa;
+
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Tudo certo!',
+            text: `Você será encaminhado para tela de gerenciamento dessa empresa`,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+
+            }
+        }); setTimeout(function () {
+            window.location = "./ManagerEdit.html"
+        }, 2000)
+
+    }
+
+    function listarEmpresa() {
+
+        fetch("/manager/listarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarEmpresa()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var empresa = resposta[i];
+                        arrayEmpresaGloba.push(empresa);
+                        // console.log(empresa)
+
+                        listaEmpresas.innerHTML += `   
+                        <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
+                        <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <h2 id="nomeEmpresa">${empresa.nome}</h2>
+                        <p id="idEmpresa">ID:${empresa.idEmpresa} </p>
+                        
+                         </button>
+                         `
+
+
+                    }
+
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1500);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "teste");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+    function search() {
+        var pesquisa = searchIpt.value.toLowerCase();
+        var containerAll = document.getElementById("listaEmpresas")
+        var containerSearch = document.getElementById("listaEmpresasPesquisadas")
+
+        containerAll.classList.add("hide")
+        containerSearch.classList.remove("hide")
+        containerSearch.innerHTML = '';
+
+
+        for (let i = 0; i < arrayEmpresaGloba.length; i++) {
+
+            if (pesquisa === arrayEmpresaGloba[i].nome.toLowerCase()) {
+
+                listaEmpresasPesquisadas.innerHTML = `   
+                        <button class="tile" onclick ="saveIdAndLocation(${arrayEmpresaGloba[i].idEmpresa},'${arrayEmpresaGloba[i].nome}')">
+                        <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <h2 id="nomeEmpresa">${arrayEmpresaGloba[i].nome}</h2>
+                        <p id="idEmpresa">ID:${arrayEmpresaGloba[i].idEmpresa} </p>
+                        </button>  `
+                return
+            }
+
+        }
+
+        Swal.fire(
+            "Ops...",
+            "Empresa não encontrada",
+            "error"
+        );setTimeout(function(){
+            window.location.reload();
+        },2000)
+
+
+    }
+
+
+
+    function checkBackspace(event) {
+        if (event.keyCode === 8) {
+            window.location.reload();
+        }
+    }
+
+
+
+</script>

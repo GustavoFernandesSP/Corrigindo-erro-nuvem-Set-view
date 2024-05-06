@@ -5,95 +5,178 @@ function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
 
-        usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+    usuarioModel.autenticar(email, senha)
+        .then(
+            function (resultadoAutenticar) {
+                console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); 
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
+                if (resultadoAutenticar.length >= 1) {
+                    console.log(resultadoAutenticar);
 
-                        usuarioModel.autenticar(email,senha)
-                            .then((resultadoAutenticar) => {
-                                if (resultadoAutenticar.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
-                               
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
+
+                    res.json({
+                        id: resultadoAutenticar[0].id,
+                        email: resultadoAutenticar[0].email,
+                        nome: resultadoAutenticar[0].nome,
+                        senha: resultadoAutenticar[0].senha,
+                        isAdmin: resultadoAutenticar[0].isAdmin,
+                        isManager: resultadoAutenticar[0].isManager,
+                        fkEmpresa: resultadoAutenticar[0].fkEmpresa,
+
+                    });
+
+                    
+
+                } else if (resultadoAutenticar.length == 0) {
+                    res.status(403).send("deu ruim, email e senhas não cadastrados")
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+
+            });
 
 }
 
-function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+function listarFunc(req, res) {
+
+    var idEmpresa = req.body.idEmpresaServer
+
+
+
+    usuarioModel.listarFunc(idEmpresa)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+
+}
+
+
+
+function editarFunc(req, res) {
+    var id = req.body.idUsuarioServer;
+    var novoEmail = req.body.novoEmailServer;
+    var novaSenha = req.body.novaSenhaServer;
+
+
+
+    usuarioModel.editarFunc(id, novoEmail, novaSenha)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                // console.log(erro);
+                console.log("tomanocu")
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+
+}
+
+
+function cadastrarFunc(req, res) {
+
     var nome = req.body.nomeServer;
-    var sobrenome = req.body.sobrenomeServer;
-    var nomeEmpresa = req.body.nomeEmpresaServer;
-    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var idEmpresa = req.body.idEmpresaServer;
+    var isAdmin = req.body.isAdminServer;
+    var cpf = req.body.cpfServer;
 
-   
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if(nomeEmpresa == undefined) {
-        res.status(422).send("empresa esta undefined")
-    }else{
+    usuarioModel.cadastrarFunc(nome, email, senha, idEmpresa, isAdmin, cpf)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-        console.log("entrando no then da controller usuario")
+function deletarFunc(req, res) {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome,sobrenome,nomeEmpresa,cnpj,email,senha)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+    var id = req.params.idVar;
+
+
+
+    usuarioModel.deletarFunc(id)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+            }
+        );
+}
+
+function findEmpresaById(req, res) {
+
+    var idEmpresaVar = req.body.idEmpresaServer;
+
+    usuarioModel.findEmpresaById(idEmpresaVar)
+        .then(
+            function (resultadoAutenticar) {
+
+                if (resultadoAutenticar.length >= 1) {
+                    console.log(resultadoAutenticar);
+                    res.json({     
+                        nomeEmpresa: resultadoAutenticar[0].nome
+                    });
+
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-        }
-    }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+            }
+        );
+}
+
+
+
+
 
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrarFunc,
+    listarFunc,
+    deletarFunc,
+    editarFunc,
+    findEmpresaById
+
 }
