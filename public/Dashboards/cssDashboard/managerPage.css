@@ -13,7 +13,7 @@ body{
 
 .contentContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
@@ -39,22 +39,58 @@ body{
 
 .containerTitle{
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 97%;;
+    /* margin-top: 100px; */
+    /* border: red solid 1px */
+
+}
+
+.titulo{
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 97%;;
-    margin-top: 100px;
+    width: 100%;
+
+    text-align: center;
+    font-family: "Viga", sans-serif;
+    color: #E0F6F9;
+    font-size: 60px;
+    font-weight: 200;
+    margin-bottom: 20px;
+    
+}
+
+.containerPesquisa{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* width: 97%;; */
+    /* margin-top: 100px; */
+    /* border: red solid 1px */
 
 }
 
-.containerTitle button{
-    background: none;
+.teste{
+    display: flex;
+    height: 30px;
+    width: 20px;
+    background-color: #ffffff;
+}
+
+.inputPesquisa{
+    height: 40px;
+    border-radius: 30px;
     border: none;
+    background-color: #E0F6F9;
+    width: 100%;
+    padding-left: 10px;
+    font-family: "Yaldevi", sans-serif;
+    color:  #176B87;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
-
-.containerTitle button:hover{
-    filter: brightness(80%) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);
-}
-
 
 .containerInfo{
     
@@ -63,7 +99,7 @@ body{
     height: 60%;
     width: 93%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
     padding: 30px;
     overflow-y: auto;
@@ -77,34 +113,17 @@ body{
     width: 400px;
     justify-content: space-between;
 }
-.titulo{
-    width: fit-content;
-    text-align: center;
-    font-family: "Viga", sans-serif;
-    color: #E0F6F9;
-    font-size: 40px;
-    font-weight: 200;
-    text-align: center;
-    /* margin:100px 10px 10px 10px; */
-}
+
 
 .btIcon{
     width: 40px;
 }
 
-.inputPesquisa{
-    height: 40px;
-    border-radius: 30px;
-    border: none;
-    background-color: #E0F6F9;
-    width: 300px;
-    padding-left: 10px;
 
-    font-family: "Yaldevi", sans-serif;
-    color:  #176B87;
-    font-size: 14px;
+img{
+    width: 150px;
+    margin-right: 20px;
 }
-
 
 
 .tile{
@@ -119,7 +138,7 @@ body{
     border-radius: 30px;
     box-shadow: 10px 10px 8px -4px #b1c2c8;
     width: 180px;
-    height: fit-content;
+    height: 200px;
     
     
     font-family: "Yaldevi", sans-serif;

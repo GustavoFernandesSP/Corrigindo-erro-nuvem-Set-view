@@ -25,7 +25,7 @@
     <div class="container-login">
       <div class="box-login">
         <div class="logo-box-cadastro">
-          <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
+          <a href="./index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
         </div>
         <div class="form-login" action="">
           <h1>Login</h1>
@@ -42,7 +42,7 @@
 
 
   <footer style="margin-top: 0;">
-    <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
+    <a href="./index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
     <p>© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
     <div class="socialMedia">
       <a href=""><img class="socialMediaImg" src="./assets/icon/Instagram.svg" alt=""></a>
@@ -85,14 +85,11 @@
       })
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
+   
         if (resposta.ok) {
-          console.log(resposta);
 
           resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+
             sessionStorage.ID_USUARIO = json.idUsuario;
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
@@ -102,21 +99,20 @@
 
             var isAdmin = sessionStorage.IS_ADMIN;
             var isManager = sessionStorage.IS_MANAGER;
-            console.log(isManager,"aaaaaaaaaaa é manager")
             var nome = sessionStorage.NOME_USUARIO;
 
 
-            if(isManager == 1){
+            if (isManager == 1) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
                 text: `Olá ${nome}, estamos te redirecionando para a página de gerenciamento das empresas.`,
                 showConfirmButton: false,
-                didOpen: () => {Swal.showLoading();}
+                didOpen: () => { Swal.showLoading(); }
 
               });
 
-            setTimeout(function () {window.location = "./Dashboards/managerAcessPages/ManagerPage.html";}, 4000);
+              setTimeout(function () { window.location = "./Dashboards/managerAcessPages/ManagerPage.html"; }, 3000);
 
               return;
             }
@@ -137,7 +133,7 @@
               setTimeout(function () {
 
                 window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
-              }, 4000);
+              }, 3000);
 
             } else if (isAdmin == 0) {
               Swal.fire({
@@ -151,7 +147,7 @@
                 }
               });
               findEmpresaById()
-              setTimeout(function () {window.location = "./Dashboards/userAcessPages/PerfilUser.html";}, 3000);
+              setTimeout(function () { window.location = "./Dashboards/userAcessPages/PerfilUser.html"; }, 3000);
             }
 
           });
@@ -171,8 +167,10 @@
 
   }
 
+
+
   function findEmpresaById() {
-    console.log(sessionStorage.FK_EMPRESA)
+
     var idEmpresaVar = sessionStorage.FK_EMPRESA;
 
     fetch("/usuario/findEmpresaById", {
@@ -185,13 +183,9 @@
       })
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
 
         if (resposta.ok) {
-          console.log(resposta);
-
           resposta.json().then(json => {
-            console.log(JSON.stringify(json));
             sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
           });
 
@@ -200,6 +194,9 @@
         }
       })
   }
+
+
+
 
 
 

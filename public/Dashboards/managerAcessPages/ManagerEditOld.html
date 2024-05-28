@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de usuários</title>
-    <!-- <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css"> -->
-    <link rel="stylesheet" href="../cssDashboard/dashboardTeste.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css">
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
     <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
 
@@ -20,8 +19,14 @@
         <div class="lista">
 
             <ul class="listaHeader">
-            
-                <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
+                    style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                    alt=""></a></li> -->
+
+                <!-- <li><a href="./ManagerPage.html"><img
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li> -->
+                <li><a href="../managerAcessPages/ManagerPage.html"><img src="../assetsDashboard/SairIcon.svg"
+                            alt=""></a></li>
             </ul>
 
         </div>
@@ -32,7 +37,7 @@
 
         <div class="contentContainer">
 
-            <div class="containerEsquerdo hide">
+            <div class="containerEsquerdo">
 
                 <div class="titulo" id="titulo">
 
@@ -43,125 +48,79 @@
                 <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
                     <p class="texto">
-                        Bem-vindo à tela de edição de cadastro de usuários da empresa <span id="nomeEmpresa"></span>.
-                        Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
+                        Bem vindo, você está no gerenciamento de permissões de usuários da empresa <span
+                            id="nomeEmpresa" style="font-weight: bold;"></span>.
+
                     </p>
-                    <!-- <button class="botao" id="btCadastrar"> -->
+                    <button class="botao" id="btCadastrar">
 
                         <div class="contentBtn">
 
                             <img src="../assetsDashboard/CadFunc.svg" alt="">
                             <p class="textoBtn">
-                                Cadastrar <br>
-                                Usuário
+                                Cadastrar Admin
                             </p>
                         </div>
                     </button>
                 </div>
 
 
+                <!-- Tela de cadastro -->
+                <div class="containerInfo" id="cadFuncContainer">
+
+
+                    <div class="inputContainerCad">
+                        <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
+                        <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc" oninput="formatarCPF(cpfFunc)" maxlength="14" minlength="14">
+                        <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
+                        <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
+                        <input class="inputInfo" type="password" placeholder="Confirmar Senha"
+                            id="senhaFuncConfirm"><br>
+                        <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarAdmin()"> Cadastrar</button>
+                    </div>
+
+                </div>
+
+                <!-- Tela de Editar Usuário -->
+                <div class="containerInfo" id="editFuncContainer">
+
+                </div>
+
+                <div class="containerInfo" id="excFuncContainer">
+
+                    <div class="inputContainerExc">
+                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
+                        <button id="excluirBt" class="botaoInfo">Excluir</button>
+                    </div>
+
+                </div>
+
+
+
+                <button id="voltar" class="voltarBt">Voltar</button>
+
+
+
+
+
             </div>
 
+            <div class="containerDireito">
+                <h1 class="titulo" style="font-size: 25px;">
+                    Lista de Admins da empresa <span id="nomeEmpresaLeftSide" style="font-weight:bold;"></span>
+                </h1>
 
-        <div class="contentContainer">
+                <input type="text" placeholder="pesquisar admins" oninput="search()" id="searchIpt" class="inputPesquisa">
 
-            <div class="abaContent">
 
-            <div class="abas">
-                
-                <div class="aba"> Gerenciar Admins</div>
-         
-                
+                <div class="listContainer" id="listaUser">
+                </div>
+
+                <div class="listContainer hide" id="listaPesquisa">
+                </div>
             </div>
-            <div class="containerMeio">
-                <div class="containerTitle">
-                    <!-- <div class="titulo" id="tituloPagina">Lista de Usuários  </div> -->
-                    
-                    
-                    <div class="containerPesquisa" id="pesquisaBar">                 
-                        <input type="text" placeholder="Pesquisar Nome" oninput="search()" id="searchIpt" class="inputPesquisa">
-                    
-                        <button class="cadastrar" id="btCadastrar" onclick="funcaoCadastrar()">Cadastrar novo Admin</button>
 
-                        
-                    </div>
-
-                    </div>
-                    
-
-
-
-                <div class="containerAll"  id="listaUser">
-
-                    
-                    
-                    
-            
-                </div>
-            
-                <div class="containerSearch "  id="listaPesquisa">
-
-                       
-                </div>
-
-                <div class="containerGeral" id="listaGeral">
-                    <div class="textoLateral">
-                        <h1>Instruções</h1>
-                        <p> Nesta tela, o administrador pode alterar as informações do usuário selecionado. Utilize os campos fornecidos para modificar os dados necessários. Após fazer as alterações desejadas, 
-                            clique em "Editar" para confirmar e salvar as mudanças. Se decidir não salvar as alterações, clique em "Voltar" para retornar à tela anterior sem efetuar nenhuma modificação.</p>
-                    </div>
-
-                    <div class="contentOpt">
-                
-                    <div class="inputContainerEdit">
-                        <p>Insira o Email:</p>
-                        <input class="inputInfo" type="text" placeholder="xxxx@yyyy.com" id="novoEmailIpt">
-                        <p>Insira a Senha</p>
-                        <input class="inputInfo" type="password" placeholder="6 ou mais caracteres" id="novaSenhaIpt">
-                        <p>Confirme a Senha:</p>
-                        <input class="inputInfo" type="password" placeholder="Certifique-se que está igual">
-                        <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
-                    </div>
-
-                    <button id="voltar1" class="voltarBt" onclick="voltarFunc()">Voltar</button>
-                </div>
-                </div>
-                    
-                    <div class="containerCad" id="conCad">
-                    <div class="textoLateral">
-                        <h1>Instruções</h1>
-                        <p> Nesta tela, o administrador pode alterar as informações do usuário selecionado. Utilize os campos fornecidos para modificar os dados necessários. Após fazer as alterações desejadas, 
-                            clique em "Editar" para confirmar e salvar as mudanças. Se decidir não salvar as alterações, clique em "Voltar" para retornar à tela anterior sem efetuar nenhuma modificação.</p>
-                    </div>
-
-                    <div class="contentOpt">
-                
-                        <div class="inputContainerCad">
-                            <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
-                            <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc" oninput="formatarCPF(cpfFunc)" maxlength="14" minlength="14">
-                            <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
-                            <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
-                            <input class="inputInfo" type="password" placeholder="Confirmar Senha"
-                                id="senhaFuncConfirm"><br>
-                            <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarAdmin()"> Cadastrar</button>
-                        </div>
-
-                   
-                  
-                    <button id="voltar2" class="voltarBt" onclick="voltarFunc()">Voltar</button>
-                </div>
-
-
-                </div>
-
-
-
-
-
-            
-            </div>
-            </div>
-            
+        </div>
 
 
     </main>
@@ -175,14 +134,42 @@
 
 <script>
     arrayGlobal = [];
-    
+     document.addEventListener("DOMContentLoaded", function () {
 
+var btCadastrar = document.getElementById("btCadastrar");
+var btEditar = document.getElementById("btEditar");
+var btExcluir = document.getElementById("btExcluir");
+var voltar = document.getElementById("voltar");
 
+btCadastrar.addEventListener("click", function () {
+
+    btGerais.style.display = "none";
+
+    voltar.style.display = "flex";
+    cadFuncContainer.style.display = "flex";
+
+    titulo.style.textAlign = "left"
+    titulo.innerHTML = "<img class='iconInfo' src='../assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+
+});
+
+voltar.addEventListener("click", function () {
+    btGerais.style.display = "flex";
+    voltar.style.display = "none";
+    editFuncContainer.style.display = "none";
+    cadFuncContainer.style.display = "none";
+    excFuncContainer.style.display = "none";
+    titulo.style.textAlign = "center"
+    titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
+
+});
+
+});
 
 
     var nomeEmpresaSalvo = sessionStorage.NOME_DA_EMPRESA_SALVO;
     nomeEmpresa.innerHTML = `${nomeEmpresaSalvo}`;
-    // nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
+    nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
 
     function formatarCPF(cpfFunc) {
     let cpf = cpfFunc.value; 
@@ -412,7 +399,7 @@
                             </div>
                             <div class="contentfuncDireito">
                                 <button class="btFunc" onclick="deletarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
-                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar </button>
+                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar permissão</button>
 
 
                             </div>
@@ -488,47 +475,5 @@
 
     var cpf = "541.249.558-39"
     console.log(cpf.length)
-
-    function funcaoCadastrar(){
-
-var containerAll = document.getElementById("listaUser");
-var containerSearch = document.getElementById("listaPesquisa");
-var containerGeral = document.getElementById("listaGeral");
-var containerCad = document.getElementById("conCad");
-var barraPesquisa = document.getElementById("pesquisaBar");
-
-containerCad.style.display = "flex";
-containerGeral.style.display = "none";
-containerAll.style.display = "none";
-containerSearch.style.display = "none";
-
-barraPesquisa.innerHTML = `<p class="titulo">Cadastrar Usuário</p>`
-
-
-titulo.style.textAlign = "center"
-titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
-paragrafName.style.textAlign = "center"
-
-}
-
-function voltarFunc(){
-
-// tituloPagina.innerHTML = `Lista de Usuários <img src="./../../assets/logo-azul-claro.svg" alt="">`
-
-var containerAll = document.getElementById("listaUser");
-var containerSearch = document.getElementById("listaPesquisa");
-var containerGeral = document.getElementById("listaGeral");
-var barraPesquisa = document.getElementById("pesquisaBar");
-var containerCad = document.getElementById("conCad");
-
-containerCad.style.display = "none";
-containerGeral.style.display = "none";
-containerAll.style.display = "flex";
-containerSearch.style.display = "none";
-barraPesquisa.innerHTML = ` <input type="text" placeholder="Pesquisar Nome" oninput="search()" id="searchIpt"       class="inputPesquisa">
-            
-            <button class="cadastrar" id="btCadastrar" onclick="funcaoCadastrar()">Cadastrar novo Usuário</button>`
-        
-        }
 
 </script>

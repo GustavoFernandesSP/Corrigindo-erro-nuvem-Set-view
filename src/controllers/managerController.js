@@ -44,7 +44,7 @@ function listarAdmin(req, res) {
 
 
 
-function cadastrarFunc(req, res) {
+function cadastrarAdmin(req, res) {
 
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -53,7 +53,7 @@ function cadastrarFunc(req, res) {
     var isAdmin = req.body.isAdminServer;
     var cpf = req.body.cpfServer;
 
-    managerModel.cadastrarFunc(nome, email, senha, idEmpresa, isAdmin, cpf)
+    managerModel.cadastrarAdmin(nome, email, senha, idEmpresa, isAdmin, cpf)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -118,7 +118,8 @@ module.exports = {
     listarEmpresa,
     listarAdmin,
     deletarAdmin,
-    revogarAdmin
+    revogarAdmin,
+    cadastrarAdmin
 
 
 }

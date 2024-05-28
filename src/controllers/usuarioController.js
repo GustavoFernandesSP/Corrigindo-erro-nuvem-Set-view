@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -17,7 +16,7 @@ function autenticar(req, res) {
 
 
                     res.json({
-                        id: resultadoAutenticar[0].id,
+                        idUsuario: resultadoAutenticar[0].idUsuario,
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
                         senha: resultadoAutenticar[0].senha,
@@ -70,9 +69,8 @@ function editarFunc(req, res) {
     var novaSenha = req.body.novaSenhaServer;
 
 
-
     usuarioModel.editarFunc(id, novoEmail, novaSenha)
-        .then(function (resultado) {
+        .then(function (resultado) { 
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
@@ -80,8 +78,7 @@ function editarFunc(req, res) {
             }
         }).catch(
             function (erro) {
-                // console.log(erro);
-                console.log("tomanocu")
+               
                 console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
@@ -148,7 +145,7 @@ function findEmpresaById(req, res) {
             function (resultadoAutenticar) {
 
                 if (resultadoAutenticar.length >= 1) {
-                    console.log(resultadoAutenticar);
+                  
                     res.json({     
                         nomeEmpresa: resultadoAutenticar[0].nome
                     });

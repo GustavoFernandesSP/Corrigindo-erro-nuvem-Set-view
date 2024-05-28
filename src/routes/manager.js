@@ -5,8 +5,8 @@ var managerController = require("../controllers/managerController");
 
 
 
-router.post("/cadastrarFunc", function (req, res) {
-    managerController.cadastrarFunc(req, res);
+router.post("/cadastrarAdmin", function (req, res) {
+    managerController.cadastrarAdmin(req, res);
 });
 
 router.post("/listarEmpresa", function (req, res) {

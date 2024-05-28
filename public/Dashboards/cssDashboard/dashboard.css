@@ -181,6 +181,17 @@ h2{
   
 }
 
+.containerCards span{
+   
+    text-align: center;
+    font-family: "Yaldevi", sans-serif;
+    color:  #000000;
+    font-weight:500;
+    font-size: 14px;
+    font-style: normal;
+  
+}
+
 .botao{
     border-radius: 30px;
     border: none;
@@ -204,7 +215,7 @@ h2{
     align-items: baseline;
     border-radius: 30px;
     height: fit-content;
-    padding:0px 20px;
+    padding: 0px 5px;
     margin: 10px;
     /* border: solid #a0c8d4 1px; */
 }

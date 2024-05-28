@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard user</title>
+    <link rel="stylesheet" href="../cssDashboard/managerPage.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+</head>
+
+<body onload="getAllMachinesByIdEmpresa()">
+
+    <header>
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./ComputerAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="contentContainer">
+            <div class="containerMeio">
+                <div class="containerTitle">
+                    <div class="titulo">Lista de Computadores<img src="./../../assets/logo-azul-claro.svg" alt="">
+                    </div>
+
+
+                    <div class="containerPesquisa">
+                        <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()"
+                            placeholder="Pesquisar Computadores">
+                    </div>
+                </div>
+                <div class="containerInfo" id="listaMaquinas">
+                    <!-- 
+                    <button class="tile">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                        <h2 id="nomeMaquina">${empresa.nome}</h2>
+                        <p id="ipMaquina">ID:${empresa.idEmpresa} </p>
+                    </button> -->
+
+
+                </div>
+
+
+
+                <div class="containerInfo hide" id="listaMaquinasPesquisadas">
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+<script>
+
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
+    var nome = sessionStorage.NOME_USUARIO;
+    console.log(nome)
+
+    function getAllMachinesByIdEmpresa(id) {
+
+        fetch(`/metrica/getAllMachinesByIdEmpresa/${idEmpresaVar}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+
+                    for(let i = 0 ;i < resposta.length;i++){
+                        let maquina = resposta[i];
+
+                        console.log(maquina)
+                    }
+                    });
+
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+
+    }
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+</script>

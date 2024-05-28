@@ -11,18 +11,20 @@
 
 </head>
 
-<body>
+<body onload="findMachineId()">
 
     <header>
 
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="../userAcessPages/PerfilUser.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="../assetsDashboard/PerfilIcon.svg" alt=""></a>
+                <li><a href="../userAcessPages/PerfilUser.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/PerfilIcon.svg" alt=""></a>
                 </li>
-                <li><a href="../userAcessPages/DashboardUserAcess.html"><img
-                            src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+                <li><a href="../userAcessPages/DashboardUserAcess.html"><img src="../assetsDashboard/DashIcon.svg"
+                            alt=""></a></li>
+                <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
         </div>
@@ -82,9 +84,33 @@
     empresaUser.innerHTML = `${empresa}`
 
 
+var idUser = sessionStorage.ID_USUARIO;
+  var idEmpresa = sessionStorage.FK_EMPRESA;
+
+  
 
 
+function findMachineId(empresa,user) {
 
+fetch(`/metrica/findMachineId/${idEmpresa}/${idUser}`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  
+}).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json=>{
+              sessionStorage.ID_COMPUTADOR = json.idComputador
+            })
+            var idMaquina = sessionStorage.ID_COMPUTADOR;
+
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+ 
+}
 
 
 

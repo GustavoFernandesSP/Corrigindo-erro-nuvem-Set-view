@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="getMachineData()">
 
   <header>
 
@@ -21,13 +21,9 @@
     <div class="lista">
 
       <ul class="listaHeader">
-        <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
-        <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" 
-          style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" 
-          alt=""></a></li>
-        <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
-        <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+        <li><a href="./ComputerAdmin.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
     </ul>
+
 
     </div>
 
@@ -39,26 +35,31 @@
         <div class="containerEsquerdo">
           <div class="containerCards">
             <div class="card">
-              <h2>Em quantos dias <br> o Armazenamento lotará</h2>
-              <p>12 dias</p>
-            </div>
-            <div class="card">
-              <h2>Recomendções</h2>
-              <p>Reduzir quantidade de processos abertos <br>
-                ou aumentar a quantidade de RAM.
-              </p>
-            </div>
-            <div class="card">
-              <h2>Velocidade da Internet</h2>
-              <p>Download: 200 Mb/s <br>
-                Upload: 150 Mb/s
-            </div>
-            <div class="card">
-              <h2>Ainda não sei</h2>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
-                Repudiandae dolorum maxime sint dicta sit hic.
+              <h2>Armazenamento</h2>
+              <span> Ocupado: 300,23 Gb </span>
+              <span> Livre: 699,23 Gb </span>
+              <span> Porcentagem: 80%</span>
+              
             </div>
 
+            <div class="card">
+              <h2>Em quantos dias <br> o Armazenamento <Br> lotará</h2>
+              <span>12 dias</span>
+            </div>
+            
+            <div class="card">
+              <h2>Velocidade da Internet</h2>
+              <span> Download: 200 Mb/s </span>
+              <span> Upload: 150 Mb/s </span>
+
+
+            </div>
+            
+            <div class="card" style="background-color: #A9DADD;">
+              <h2>Recomendações</h2>
+              <span>Reduzir quantidade de processos abertos <br>
+                ou aumentar a quantidade de RAM.</span>
+            </div>
           </div>
 
           <div class="containerGraficos">
@@ -66,14 +67,14 @@
             <div class="graficoLinha">
               <div class="grafico">
                 <div>
-                  <h2 style="margin-top: 15px;">Armazenamento</h2>
+                  <h2 style="margin-top: 15px;">Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt=""></h2>
                   <canvas id="myChart" style="width: 512px; height: 140px;"></canvas>
                 </div>
 
 
               </div>
               <div class="grafico2">
-                <h2> Uso de Ram</h2>
+                <h2> Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <canvas id="myChart3" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -81,7 +82,7 @@
 
             <div class="graficoLinha">
               <div class="grafico">
-                <h2 style="margin-top: 15px;"> Utilização do processador</h2>
+                <h2 style="margin-top: 15px;"> Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <div>
                   <canvas id="myChart2" style="width: 512px; height: 140px;"></canvas>
                 </div>
@@ -89,7 +90,7 @@
 
               </div>
               <div class="grafico2">
-                <h2> Status de Rede</h2>
+                <h2> Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt=""></h2>
                 <canvas id="myChart4" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -102,53 +103,41 @@
             <h2 style="margin-top: 20px;">Informações</h2>
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Armazenamento</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
-                  x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
-                      x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
-                        Uso < x%</span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou menos </span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até 80%</span>
+                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
+                        <p style="font-size: 12px;">Eixo X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Eixo Y =  Porcentagem</p>
     
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Memória Ram</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
-                x%</span>
-                <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
-                  x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
-                    Uso < x%</span>
-                    <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                    <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 50% ou menos </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 51% até 80%</span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
+                    <p style="font-size: 12px;">Eixo X =  Hora de captura</p>
+                    <p style="font-size: 12px;">Eixo Y =  Porcentagem</p>
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Processador</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
-                  x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
-                      x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
-                        Uso < x%</span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou menos </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até 80%</span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
+                        <p style="font-size: 12px;">Eixo X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Eixo Y =  Porcentagem</p>
     
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Rede</h2>
 
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
-                  x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
-                      x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
-                        Uso < x%</span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Quantidade</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> U↑ > 100Mb/s & D↓  > 150Mb/s </span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> U↑  < 50Mb/s & D↓  < 100Mb/s  </span>
+                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> U↑ < 20Mb/s & D↓  < 60Mb/s  <span>
+                        <p style="font-size: 12px;">Eixo X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Eixo Y =  Quantidade</p>
             </div>
           </div>
         </div>
@@ -170,21 +159,59 @@
 
 <script>
 
-  //Gráfico 1---------------------------------------------------------
+var idMachine = sessionStorage.MAQUINA_SELECIONADA;
+
+
+ function getMachineData(id) {
+  
+  fetch(`/metrica/getMachineData/${idMachine}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  }).then(function (resposta) {
+    if (resposta.ok) {
+
+      resposta.json().then(function (resposta) {
+
+
+        console.log("Ultimo dado: ", resposta[resposta.length - 1])
+
+        armazenamento(resposta)
+        processador(resposta)
+        ram(resposta)
+        rede(resposta)
+
+
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+
+
+}
+
+
+function armazenamento(dados) {
+
   const ctx = document.getElementById('myChart');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.discoUso);
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
         label: 'Porcentagem de armazenamento',
-        data: [30, 30, 34, 30, 32, 31],
-        borderWidth: 1
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }]
     },
     options: {
-
       scales: {
         y: {
           beginAtZero: true
@@ -192,23 +219,25 @@
       }
     }
   });
+}
 
+function processador(dados) {
 
-
-
-  //Gráfico 3---------------------------------------------------------
   const ctx2 = document.getElementById('myChart2');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.processadorUso);
 
   new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
-        label: 'Porcentagem uso do processador',
-        data: [88, 70, 87, 85, 93, 100],
-        borderWidth: 1
-      }],
-
+        label: 'Porcentagem de utilização do processador',
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      }]
     },
     options: {
 
@@ -219,20 +248,26 @@
       }
     }
   });
+}
 
 
 
-  //Gráfico 3---------------------------------------------------------
+function ram(dados) {
+
   const ctx3 = document.getElementById('myChart3');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.ramUso);
 
   new Chart(ctx3, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
-        label: 'Porcentagem uso de ram',
-        data: [40, 43, 36, 42, 48, 41],
-        borderWidth: 1
+        label: 'Porcentagem de ram em uso',
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }]
     },
     options: {
@@ -244,28 +279,35 @@
       }
     }
   });
+}
 
+function rede(dados) {
 
-  //Gráfico 4---------------------------------------------------------
   const ctx4 = document.getElementById('myChart4');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
+  const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
 
   new Chart(ctx4, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
         label: 'Bytes recebidos',
-        data: [132, 219, 3123, 512, 232, 322],
-        borderWidth: 1
+        data: dataBytesRecebidos,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       },
       {
-        label: 'Bytes Enviados',
-        data: [232, 323, 32, 1, 2123, 123],
-        borderWidth: 1
+        label: 'Bytes enviados',
+        data: dataBytesEnviados,
+        borderWidth: 1,
+        borderColor: 'rgba(192, 75, 75, 1)',
+        backgroundColor: 'rgba(192, 75, 75, 0.2)',
       }]
     },
     options: {
-
       scales: {
         y: {
           beginAtZero: true
@@ -273,4 +315,7 @@
       }
     }
   });
+}
+
+
 </script>

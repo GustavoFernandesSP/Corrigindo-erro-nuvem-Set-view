@@ -16,7 +16,7 @@ function cadastrarFunc(nome, email, senha, idEmpresa,isAdmin,cpf) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuario (nome, cpf,email,isAdmin,senha,fkEmpresa) VALUES ('${nome}','${cpf}','${email}','${isAdmin}', '${senha}','${idEmpresa}');
+        INSERT INTO usuario (nome, cpf,email,isAdmin, senha,fkEmpresa) VALUES ('${nome}','${cpf}','${email}','${isAdmin}', '${senha}','${idEmpresa}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -58,7 +58,7 @@ function editarFunc(idUser,novoEmail,novaSenha) {
 }
 
 function findEmpresaById(idEmpresaVar){
-    var instrucaoSql = `SELECT nome FROM empresa WHERE idEmpresa = '${idEmpresaVar}'`
+    var instrucaoSql = `SELECT nome FROM Empresa WHERE idEmpresa = '${idEmpresaVar}'`
     return database.executar(instrucaoSql);
 }
 
