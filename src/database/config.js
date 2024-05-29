@@ -19,6 +19,17 @@ var mySqlConfig = {
     password: "1033",  
 };
 
+// Configuração para SQL Server
+var sqlServerConfig = {
+    user: 'sa',
+    password: 'Urubu.100',
+    server: '52.20.245.218', // endereço do servidor SQL
+    database: 'securityWings',
+    options: {
+        encrypt: true, // Use true se você estiver conectando ao Azure SQL
+        trustServerCertificate: true // Use true se você estiver conectando a um servidor local e precisar confiar no certificado
+    }
+};
 
 
 // CONEXÃO DO MYSQL DEV LUCA SENA(FRONT-END)
