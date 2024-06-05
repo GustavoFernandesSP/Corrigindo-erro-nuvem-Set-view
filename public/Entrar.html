@@ -104,7 +104,7 @@
 
             getAllParamsJson(idEmpresa)
 
-            if (isManager == 1) {
+            if (isManager == true) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
@@ -119,7 +119,7 @@
               return;
             }
 
-            if (isAdmin == 1) {
+            if (isAdmin) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
@@ -137,7 +137,7 @@
                 window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
               }, 3000);
 
-            } else if (isAdmin == 0) {
+            } else if (isAdmin == false) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
