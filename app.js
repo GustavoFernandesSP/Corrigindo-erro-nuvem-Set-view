@@ -1,5 +1,5 @@
-// process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-    process.env.AMBIENTE_PROCESSO = "producao";
+//process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+ process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
@@ -14,6 +14,7 @@ var usuarioRouter = require("./src/routes/usuario");
 var managerRouter = require("./src/routes/manager");
 var metricaRouter = require("./src/routes/metrica");
 var alertaRouter = require("./src/routes/alerta")
+var processoRouter = require("./src/routes/processos")
 
 const { Console } = require("console");
 
@@ -30,6 +31,7 @@ app.use("/usuario", usuarioRouter);
 app.use("/manager", managerRouter);
 app.use("/metrica", metricaRouter);
 app.use("/alerta" , alertaRouter);
+app.use("/processos" , processoRouter)
 
 app.listen(PORTA, function () {
     console.log(`É A TROPA DO WEB-WING-SQUAD NÃO TEM JEITOOOOOOO: http://localhost:${PORTA}`);

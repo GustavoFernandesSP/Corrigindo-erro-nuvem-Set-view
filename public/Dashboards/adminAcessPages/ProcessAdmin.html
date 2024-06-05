@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de usuários</title>
+    <!-- <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css"> -->
+    <link rel="stylesheet" href="../cssDashboard/dashboardTeste.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/adminAlert.css">
+    <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
+</head>
+
+<body onload="processos()">
+
+    <header>
+
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./ComputerAdmin.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
+
+    <main>
+
+
+
+
+
+        <div class="contentContainer">
+
+            <div class="abaContent">
+
+                <div class="abas">
+
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./AlertsAdmin.html">Gerenciar Alertas</a></div>
+                    <div class="aba">Gerenciar Processos</div>
+
+
+                </div>
+                <div class="containerMeio">
+                    <div class="containerTitle">
+                        <div class="titulo" id="tituloPagina"> Gerenciar permissões de processos
+                            <button class="confirmar" id="btCadastrar" onclick="funcaoConfirmar()"><img
+                                    style="width: 20px; margin: 0 10px 0 0;" src="../assetsDashboard/Certin.svg"
+                                    alt="">Confirmar Modificações</button>
+
+                        </div>
+                        <p style="color: #E0F6F9;">Os processos selecionados não serão permitidos a execução</p>
+
+                    </div>
+
+
+
+
+                    <div class="containerGeral" style="display: flex;" id="listaUser">
+
+                        <div class="content">
+
+                            <div class="inputContainerProcess">
+
+                                <div class="processCategory" id="navegation">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Navegadores</h1>
+
+
+
+
+                                    <!-- <div class="process">
+                                        <input type="checkbox" name="" id="idFirefox">
+                                        <p>Firefox</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idSafari">
+                                        <p>Safari</p>
+                                    </div> -->
+
+
+                                </div>
+
+                                <div class="processCategory" id="utils">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Úteis</h1>
+
+
+
+
+                                </div>
+
+                                <div class="processCategory" id="others">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Outros</h1>
+
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+
+</body>
+
+
+<script>
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
+    console.log(idEmpresaVar)
+    var globalArray = []
+
+
+    async function allowed(idEmpresa) {
+        try {
+            const resposta = await fetch(`/processos/getAllAllowed/${idEmpresa}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+            if (resposta.ok) {
+                const dados = await resposta.json();
+                globalArray = dados;
+                console.log(globalArray, "array global")
+            }
+        } catch (erro) {
+            console.log(erro);
+        }
+    }
+
+
+    async function processos() {
+    try {
+        const resposta = await fetch("/processos/getAllProcess", {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        });
+        if (resposta.ok) {
+            const processos = await resposta.json();
+            await allowed(idEmpresaVar);
+
+            for (let i = 0; i < processos.length; i++) {
+                const processo = processos[i];
+                
+                const isChecked = globalArray.some(p => p.fkProcesso === processo.idProcesso && p.isAllowed === 1);
+
+                const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
+
+                if (processo.categoria_do_processo === "navegador") {
+                    navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                } else if (processo.categoria_do_processo === "utils") {
+                    utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                } else if (processo.categoria_do_processo === "outros") {
+                    others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                }
+            }
+        }
+    } catch (erro) {
+        console.log("deu erro:", erro);
+    }
+}
+
+
+
+function insertToDataBase(idProcess) {
+    var checkbox = document.getElementById(`checkIpt_${idProcess}`);
+    var isAllowedValue = checkbox.checked ? 1 : 0; 
+    console.log(isAllowedValue);
+    var created_atVar =  new Date().toISOString().slice(0, 19).replace('T', ' ');
+    console.log(created_atVar)
+
+    fetch(`/processos/settingProcess/${idProcess}`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            isAllowed: isAllowedValue, 
+            idEmpresa: idEmpresaVar,
+            created_at : created_atVar
+
+        })
+    }).then((resposta) => {
+        if (resposta.ok) {
+            console.log("Processo inserido/atualizado com sucesso.");
+            checkbox.checked = isAllowedValue;
+
+            window.location.reload()
+        } else {
+            console.log("Erro ao inserir/atualizar o processo.");
+        }
+    }).catch((erro) => {
+        console.log("Erro ao inserir/atualizar o processo:", erro);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>

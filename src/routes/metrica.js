@@ -16,9 +16,7 @@ router.post("/getAllMachinesByIdEmpresa/:idEmpresa" , function (req,res) {
     metricaController.getAllMachinesByIdEmpresa(req,res);
 })
 
-router.post("/dataCompair/:ids", function (req, res) {
-    metricaController.dataCompair(req, res);
-});
+
 
 
 

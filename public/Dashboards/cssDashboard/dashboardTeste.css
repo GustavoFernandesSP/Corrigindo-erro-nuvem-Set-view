@@ -364,10 +364,35 @@ p{
     cursor: pointer;
 }
 
+.confirmar{
+    display: flex;
+    width: fit-content;
+    margin-right: 20px;
+    padding: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 30px;
+    border: none;
+    
+    
+    background-color: #3ea950;
+    color: #E0F6F9;
+    font-family: "Viga", sans-serif;
+
+}
+
+.confirmar:hover{
+    background-color: #58b660;
+    cursor: pointer;
+}
+
 .titulo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 
     text-align: center;
@@ -375,7 +400,7 @@ p{
     color: #E0F6F9;
     font-size: 60px;
     font-weight: 200;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     
 }
 
@@ -570,3 +595,5 @@ h1{  display: flex;
     font-weight: 200;
     margin-bottom: 20px;
     }
+
+

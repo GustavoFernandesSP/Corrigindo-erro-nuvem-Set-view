@@ -50,14 +50,14 @@ var sqlServerConfig = {
 // };
 
 
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
-//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
 
 
 

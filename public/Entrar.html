@@ -19,6 +19,8 @@
 
 <body>
 
+
+
   <div class="background-login">
     <div class="container-login">
       <div class="box-login">
@@ -32,7 +34,7 @@
           <input type="password" placeholder="Senha" id="senhaIpt">
           <button onclick="entrar()">Entrar na conta</button>
           <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
-      <a href="./Dashboards/managerAcessPages/ManagerPage.html">acessar</a>
+
         </div>
       </div>
     </div>
@@ -97,8 +99,10 @@
 
             var isAdmin = sessionStorage.IS_ADMIN;
             var isManager = sessionStorage.IS_MANAGER;
-            var nome = sessionStorage.NOME_USUARIO;
+            var nome = sessionStorage.NOME_USUARIO
+            var idEmpresa = sessionStorage.FK_EMPRESA;
 
+            getAllParamsJson(idEmpresa)
 
             if (isManager == 1) {
               Swal.fire({
@@ -192,6 +196,35 @@
         }
       })
   }
+
+
+  function getAllParamsJson(id){
+        fetch(`/alerta/getAllParamsJSON/${id}`,{
+            method : "GET",
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }).then((resposta)=>{
+            if(resposta.ok){
+         
+                resposta.json().then(json =>{
+
+                    sessionStorage.RAM_DANGER = json.ramDanger;
+                    sessionStorage.RAM_WARNING = json.ramWarning;
+                    sessionStorage.CPU_DANGER = json.processadorDanger;
+                    sessionStorage.CPU_WARNING = json.processadorWarning;
+                    sessionStorage.REDE_DANGER = json.internetDanger;
+                    sessionStorage.REDE_WARNIG = json.internetWarning;
+                    sessionStorage.HD_DANGER = json.discoDanger;
+                    sessionStorage.HD_WARNING = json.discoWarning;
+
+                })
+            }
+        }).catch((erro)=>{
+            console.log("deu erro" , erro)
+        })
+    }
+  
 
 
 

@@ -13,7 +13,7 @@
 
 </head>
 
-<body">
+<body onload="getAllParams()">
 
     <header>
 
@@ -23,7 +23,9 @@
             <ul class="listaHeader">
                 <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
                 <li><a href="./ComputerAdmin.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="./MenagentmentAdmin.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
@@ -34,7 +36,7 @@
 
     <main>
 
-       
+
 
 
 
@@ -42,254 +44,442 @@
 
             <div class="abaContent">
 
-            <div class="abas">
-                
-                <div class="aba" style="background-color: #426572"><a style="color: #8bacb8" href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
-                <div class="aba">Gerenciar Alertas</div>
-                
-            </div>
-            <div class="containerMeio">
-                <div class="containerTitle">
-                    <div class="titulo" id="tituloPagina">Definir parâmetros de alertas</div>
-                    
-                    
-                    
-                    </div>
-                    
+                <div class="abas">
+
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8" href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
+                    <div class="aba">Gerenciar Alertas</div>
+                    <div class="aba"style="background-color: #426572"><a style="color: #8bacb8" href="./ProcessAdmin.html">Gerenciar Processos</a></div>
 
 
-
-                <div class="containerGeral" style="display: flex;"  id="listaUser">
-
-                    <div class="content">
-                
-                        <div class="inputContainerParam">
-
-
-                            <div class="param" id="paramCPU">
-
-                                <p class="titleParam">CPU</p>
-                                <div class="paramMid">
-                                <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
-                                        
-                                
-                                    <div class="paramInputs">
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
-                                            <p class="label">Risco: </p>
-                                            <div id="cpuRedDiv" class="redCPU label">
-                                                <div class="spanLabel" id="cpuValueRed">90%</div> 
-                                            </div>
-                                           
-                                            
-                                        </div>
-                                        
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
-                                            <p class="label">Alerta: </p>
-                                            <div id="cpuYellowDiv" class="yellowCPU label">
-                                                <div class="spanLabel" id="cpuValueYellow">60%</div> 
-                                            </div>
-
-                                            
-                                        </div>
-                                        
-                                        <div class="inputLine">
-                                        <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                            <p class="label">Normal: </p>
-                                            <div id="cpuGreenDiv" class="greenCPU label">
-                                                <div class="spanLabel" id="cpuValueGreen">10%</div> 
-                                            </div>
-                                           
-                                        </div>                                    
-                                    </div>
-    
-                                </div>
-
-                                <div class="botoesC" id="botoesCpuDiv">                                    
-                                    <button class="exc" id="deleteCPU" onclick="excluirCPU(), firstCPU()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                                    <button id="editCPU" onclick="editarCPU()" >Editar</button>
-                                    
-                                </div>
-    
-                                
-    
-                            </div>
-                            
-                            <div class="param" id="paramHD">
-
-                                <p class="titleParam">HD</p>
-                                <div class="paramMid">
-                                    <img class="icon" src="../assetsDashboard/HD.svg" alt="">
-                            
-                                    <div class="paramInputs">
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
-                                            <p class="label">Risco: </p>
-                                            <div id="hdRedDiv" class="redHD label">
-                                                <div class="spanLabel" id="hdValueRed">90%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
-                                            <p class="label">Alerta: </p>
-                                            <div id="hdYellowDiv" class="yellowHD label">
-                                                <div class="spanLabel" id="hdValueYellow">60%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                            <p class="label">Normal: </p>
-                                            <div id="hdGreenDiv" class="greenHD label">
-                                                <div class="spanLabel" id="hdValueGreen">10%</div> 
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            
-                                <div class="botoesC" id="botoesHdDiv">                                    
-                                    <button class="exc" id="deleteHD" onclick="excluirHD(), firstHD()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                                    <button id="editHD" onclick="editarHD()" >Editar</button>
-                                </div>
-                            </div>
-                        
-                            <div class="param" id="paramREDE">
-
-                                <p class="titleParam">REDE</p>
-                                <div class="paramMid">
-                                    <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
-                            
-                                    <div class="paramInputs">
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
-                                            <p class="label">Risco: </p>
-                                            <div id="redeRedDiv" class="redREDE label">
-                                                <div class="spanLabel" id="redeValueRed">90%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
-                                            <p class="label">Alerta: </p>
-                                            <div id="redeYellowDiv" class="yellowREDE label">
-                                                <div class="spanLabel" id="redeValueYellow">60%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                            <p class="label">Normal: </p>
-                                            <div id="redeGreenDiv" class="greenREDE label">
-                                                <div class="spanLabel" id="redeValueGreen">10%</div> 
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            
-                                <div class="botoesC" id="botoesRedeDiv">                                    
-                                    <button class="exc" id="deleteREDE" onclick="excluirREDE(),  firstREDE()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                                    <button id="editREDE" onclick="editarREDE()" >Editar</button>
-                                </div>
-                            </div>
-                           
-                           
-                            <div class="param" id="paramRAM">
-
-                                <p class="titleParam">RAM</p>
-                                <div class="paramMid">
-                                    <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
-                            
-                                    <div class="paramInputs">
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
-                                            <p class="label">Risco: </p>
-                                            <div id="ramRedDiv" class="redRAM label">
-                                                <div class="spanLabel" id="ramValueRed">90%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
-                                            <p class="label">Alerta: </p>
-                                            <div id="ramYellowDiv" class="yellowRAM label">
-                                                <div class="spanLabel" id="ramValueYellow">60%</div> 
-                                            </div>
-                                        </div>
-                            
-                                        <div class="inputLine">
-                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                            <p class="label">Normal: </p>
-                                            <div id="ramGreenDiv" class="greenRAM label">
-                                                <div class="spanLabel" id="ramValueGreen">10%</div> 
-                                            </div>
-                                        </div>                                    
-                                    </div>
-                                </div>
-                            
-                                <div class="botoesC" id="botoesRamDiv">                                    
-                                    <button class="exc" id="deleteRAM" onclick="excluirRAM(), firstRAM()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                                    <button id="editRAM" onclick="editarRAM()" >Editar</button>
-                                </div>
-                            </div>
-                            
-                      
-                      
-                        </div>
-                  
-                    
-                    </div>
-            
                 </div>
-            
+                <div class="containerMeio">
+                    <div class="containerTitle">
+                        <div class="titulo" id="tituloPagina">Definir parâmetros de alertas</div>
+
+
+
+                    </div>
+
+
+
+
+                    <div class="containerGeral" style="display: flex;" id="listaUser">
+
+                        <div class="content">
+
+                            <div class="inputContainerParam">
+
+                                <div class="param" id="paramCPUfirst">
+                                    <p class="titleParam" style="margin-right: 8px">CPU</p>
+                                    <div class="paramMid">
+                                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/CPU.svg"
+                                            alt="">
+
+
+                                    </div>
+
+                                    <div class="botoesC" id="botoesCpuDiv">
+                                        <button class="exc" id="criarCPU" onclick="criarCpu()">Criar Alerta</button>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="param hide" id="paramCPU">
+
+                                    <p class="titleParam">CPU</p>
+                                    <div class="paramMid">
+                                        <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+
+
+                                        <div class="paramInputs">
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                                <p class="label">Risco </p>
+                                                <div id="cpuRedDiv" class="redCPU label">
+                                                    <div class="spanLabel" id="cpuValueRed">90%</div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                                <p class="label">Alerta </p>
+                                                <div id="cpuYellowDiv" class="yellowCPU label">
+                                                    <div class="spanLabel" id="cpuValueYellow">60%</div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                                <p class="label">Normal </p>
+                                                <div id="cpuGreenDiv" class="greenCPU label">
+                                                    <div class="spanLabel" id="cpuValueGreen">10%</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="botoesC" id="botoesCpuDiv">
+                                        <button class="exc" id="deleteCPU" onclick="deleteCPU()">Excluir</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+                                        <button id="editCPU" onclick="editarCpu()">Editar</button>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="param" id="paramHDfirst">
+                                    <p class="titleParam" style="margin-right: 8px">HD</p>
+                                    <div class="paramMid">
+                                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/HD.svg"
+                                            alt="">
+
+
+                                    </div>
+
+                                    <div class="botoesC" id="botoesHdDiv">
+                                        <button class="exc" id="criarHD" onclick="criarHd()">Criar Alerta</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+
+
+                                    </div>
+                                </div>
+
+                                <div class="param hide" id="paramHD">
+
+                                    <p class="titleParam">HD</p>
+                                    <div class="paramMid">
+                                        <img class="icon" src="../assetsDashboard/HD.svg" alt="">
+
+                                        <div class="paramInputs">
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                                <p class="label">Risco </p>
+                                                <div id="hdRedDiv" class="redHD label">
+                                                    <div class="spanLabel" id="hdValueRed">90%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                                <p class="label">Alerta</p>
+                                                <div id="hdYellowDiv" class="yellowHD label">
+                                                    <div class="spanLabel" id="hdValueYellow">60%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                                <p class="label">Normal </p>
+                                                <div id="hdGreenDiv" class="greenHD label">
+                                                    <div class="spanLabel" id="hdValueGreen">10%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="botoesC" id="botoesHdDiv">
+                                        <button class="exc" id="deleteHD" onclick="deleteDisco()">Excluir</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+                                        <button id="editHD" onclick="editarHd()">Editar</button>
+                                    </div>
+                                </div>
+
+                                <div class="param" id="paramREDEfirst">
+                                    <p class="titleParam" style="margin-right: 8px">REDE</p>
+                                    <div class="paramMid">
+                                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/REDE.svg"
+                                            alt="">
+
+
+                                    </div>
+
+                                    <div class="botoesC" id="botoesRedeDiv">
+                                        <button class="exc" id="criarREDE" onclick="criarRede()">Criar Alerta</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+
+
+                                    </div>
+                                </div>
+
+                                <div class="param hide" id="paramREDE">
+
+                                    <p class="titleParam">REDE</p>
+                                    <div class="paramMid">
+                                        <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
+
+                                        <div class="paramInputs">
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                                <p class="label">Risco </p>
+                                                <div id="redeRedDiv" class="redREDE label">
+                                                    <div class="spanLabel" id="redeValueRed">90%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                                <p class="label">Alerta </p>
+                                                <div id="redeYellowDiv" class="yellowREDE label">
+                                                    <div class="spanLabel" id="redeValueYellow">60%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                                <p class="label">Normal </p>
+                                                <div id="redeGreenDiv" class="greenREDE label">
+                                                    <div class="spanLabel" id="redeValueGreen">10%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="botoesC" id="botoesRedeDiv">
+                                        <button class="exc" id="deleteREDE" onclick="deleteRede()">Excluir</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+                                        <button id="editREDE" onclick="editarRede()">Editar</button>
+                                    </div>
+                                </div>
+
+
+                                <div class="param" id="paramRAMfirst">
+                                    <p class="titleParam" style="margin-right: 8px">RAM</p>
+                                    <div class="paramMid">
+                                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/RAM.svg"
+                                            alt="">
+
+
+                                    </div>
+
+                                    <div class="botoesC" id="botoesRamDiv">
+                                        <button class="exc" id="criarRAM" onclick="criarRam()">Criar Alerta</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+
+
+                                    </div>
+                                </div>
+
+                                <div class="param hide" id="paramRAM">
+
+                                    <p class="titleParam">RAM</p>
+                                    <div class="paramMid">
+                                        <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
+
+                                        <div class="paramInputs">
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                                <p class="label">Risco </p>
+                                                <div id="ramRedDiv" class="redRAM label">
+                                                    <div class="spanLabel" id="ramValueRed">90%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                                <p class="label">Alerta </p>
+                                                <div id="ramYellowDiv" class="yellowRAM label">
+                                                    <div class="spanLabel" id="ramValueYellow">60%</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="inputLine">
+                                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                                <p class="label">Normal </p>
+                                                <div id="ramGreenDiv" class="greenRAM label">
+                                                    <div class="spanLabel" id="ramValueGreen">10%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="botoesC" id="botoesRamDiv">
+                                        <button class="exc" id="deleteRAM" onclick="deleteRam()">Excluir</button>
+                                        <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
+                                        <button id="editRAM" onclick="editarRam()">Editar</button>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
 
 
 
 
 
+
+                </div>
             </div>
-            </div>
-            </div>
-            
+        </div>
+
 
 
     </main>
 
-    <footer></footer>
 
 </body>
 
+
+
 <script>
+    var idEmpresa = sessionStorage.FK_EMPRESA;
 
-// ------------------------------------- FUNÇÕES CPU -------------------------
+    function getAllParamsJson(id){
+        fetch(`/alerta/getAllParamsJSON/${id}`,{
+            method : "GET",
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }).then((resposta)=>{
+            if(resposta.ok){
+         
+                resposta.json().then(json =>{
 
-    function firstCPU(){
+                    sessionStorage.RAM_DANGER = json.ramDanger;
+                    sessionStorage.RAM_WARNING = json.ramWarning;
+                    sessionStorage.CPU_DANGER = json.processadorDanger;
+                    sessionStorage.CPU_WARNING = json.processadorWarning;
+                    sessionStorage.REDE_DANGER = json.internetDanger;
+                    sessionStorage.REDE_WARNIG = json.internetWarning;
+                    sessionStorage.HD_DANGER = json.discoDanger;
+                    sessionStorage.HD_WARNING = json.discoWarning;
 
-        var cpuDiv = document.getElementById('paramCPU')
-        
-        cpuDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">CPU</p>
-                                <div class="paramMid">
-                                <img class="icon" style="margin-right: 2px" src="../assetsDashboard/CPU.svg" alt="">
-                                        
-                                
-                                </div>
+                })
+            }
+        }).catch((erro)=>{
+            console.log("deu erro" , erro)
+        })
+    }
 
-                                <div class="botoesC" id="botoesCpuDiv">                                    
-                                    <button class="exc" id="criarCPU" onclick="criarCPU()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                                    
-                                    
-                                </div>`
-    
+    function getAllParams() {
 
+        console.log(idEmpresa, "ta chegando aqui")
+
+        fetch(`/alerta/getAllparams/${idEmpresa}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            },
+        }).then((resposta) => {
+            if (resposta) {
+                getAllParamsJson(idEmpresa)
+                resposta.json().then((resposta) => {
+                    console.log(resposta)
+                   
+                    for (let i = 0; i < resposta.length; i++) {
+                        var rep = resposta[i]
+
+                        cpuValueRed.innerHTML = `a partir de: ${rep.processadorDanger}%`;
+                        cpuValueYellow.innerHTML = `a partir de: ${rep.processadorWarning}%`;
+                        cpuValueGreen.innerHTML = `até: ${rep.processadorWarning - 1}%`
+                        ramValueRed.innerHTML = `a partir de: ${rep.ramDanger}%`;
+                        ramValueYellow.innerHTML = `a partir de: ${rep.ramWarning}%`;
+                        ramValueGreen.innerHTML = `até: ${rep.ramWarning - 1}%`;
+                        hdValueRed.innerHTML = `a partir de: ${rep.discoDanger}%`;
+                        hdValueYellow.innerHTML = `a partir de: ${rep.discoWarning}%`;
+                        hdValueGreen.innerHTML = `até: ${rep.discoWarning - 1}%`;
+                        redeValueRed.innerHTML = `a partir de: ${rep.internetDanger}%`;
+                        redeValueYellow.innerHTML = `a partir de: ${rep.internetWarning}%`;
+                        redeValueGreen.innerHTML = `até: ${rep.internetWarning - 1}%`;
+                    }
+
+                    showOrNot(resposta)
+                })
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
     }
 
 
-    function criarCPU(){
+    function unHideCpu() {
 
-        var cpuDiv = document.getElementById('paramCPU')
+        var inputsCpu = document.getElementById("paramCPU")
+        var functionsCpu = document.getElementById("paramCPUfirst")
 
-        cpuDiv.innerHTML = `<p class="titleParam">CPU</p>
+        functionsCpu.classList.add("hide")
+        inputsCpu.classList.remove("hide")
+
+
+
+    }
+
+    function unHideDisco() {
+
+        var inputsHd = document.getElementById("paramHDfirst")
+        var functionHsd = document.getElementById("paramHD")
+
+        inputsHd.classList.add("hide")
+        functionHsd.classList.remove("hide")
+
+
+    }
+
+    function unHideRede() {
+        var inputsRede = document.getElementById("paramREDEfirst")
+        var functiosRede = document.getElementById("paramREDE")
+
+        inputsRede.classList.add("hide")
+        functiosRede.classList.remove("hide")
+
+    }
+
+    function unHideRam() {
+        var inpustRam = document.getElementById("paramRAMfirst")
+        var functionsRam = document.getElementById("paramRAM")
+
+        inpustRam.classList.add("hide")
+        functionsRam.classList.remove("hide")
+    }
+
+
+
+    function showOrNot(lista) {
+
+        for (let i = 0; i < lista.length; i++) {
+            var alerta = lista[i];
+
+
+
+            if (alerta.ramDanger != null && alerta.ramWarning != null) {
+                unHideRam();
+            }
+
+            if (alerta.processadorWarning != null && alerta.processadorDanger) {
+                unHideCpu();
+            }
+
+            if (alerta.discoDanger != null && alerta.discoWarning) {
+                unHideDisco();
+            }
+
+            if (alerta.internetDanger != null && alerta.internetWarning != null) {
+                unHideRede();
+            }
+        }
+    }
+
+
+
+    function criarCpu() {
+        var divCpuPre = document.getElementById("paramCPUfirst")
+
+        divCpuPre.innerHTML = `<p class="titleParam">CPU</p>
                                 <div class="paramMid">
                                 <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
                                         
@@ -299,7 +489,7 @@
                                             <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                             <p class="label">Risco: </p>
                                             <div id="cpuRedDiv" class="redCPU label">
-                                                <input type="number" id="redCPU">
+                                                <input type="number" id="redCpu" style="text-align: center; height : 20px;">
                                             </div>
                                            
                                             
@@ -309,221 +499,125 @@
                                             <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                             <p class="label">Alerta: </p>
                                             <div id="cpuYellowDiv" class="yellowCPU label">
-                                                <input type="number" id="yellowCPU"> 
+                                                <input type="number" id="yellowCpu" style="text-align: center; height : 20px;">
                                             </div>
 
                                             
                                         </div>
-                                        
-                                        <div class="inputLine">
-                                        <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                            <p class="label">Normal: </p>
-                                            <div id="cpuGreenDiv" class="greenCPU label">
-                                                <input type="number" id="greenCPU"> 
-                                            </div>
-                                           
-                                        </div>                                    
+                                                                    
                                     </div>
     
                                 </div>
 
                                 <div class="botoesC" id="botoesCpuDiv">                                    
-                                    <button id="applyCPU" onclick="confirmarCPU(), voltarCPU()">Confirmar</button>
-                                    <button id="backCPU" onclick="firstCPU()">Cancelar</button>
+                                    <button id="applyCPU" onclick="setCpu()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
                                     
                                 </div>`
 
-    }
-
-    function confirmarCPU(){
-
-            //Função do create
-
-        }
-
-        function excluirCPU(){
-
-            //Função do truncate
-
-        }
-
-
-    function editarCPU(){
-
-        var cpuGreen = document.getElementById('cpuGreenDiv')
-        var cpuYellow = document.getElementById('cpuYellowDiv')
-        var cpuRed = document.getElementById('cpuRedDiv')
-        var cpuBotoes = document.getElementById('botoesCpuDiv')
-
-        cpuGreen.innerHTML = `<input type="number" id="greenCPU">`
-        cpuYellow.innerHTML = `<input type="number" id="yellowCPU">`
-        cpuRed.innerHTML = `<input type="number" id="redCPU">`
-        cpuBotoes.innerHTML = `<button id="applyCPU" onclick="aplicarCPU()">Aplicar</button>
-                                <button id="backCPU" onclick="voltarCPU()">Voltar</button>`
 
     }
 
-    function voltarCPU(){
-        var cpuGreen = document.getElementById('cpuGreenDiv')
-        var cpuYellow = document.getElementById('cpuYellowDiv')
-        var cpuRed = document.getElementById('cpuRedDiv')
-        var cpuBotoes = document.getElementById('botoesCpuDiv')
+    function setCpu() {
 
-        cpuGreen.innerHTML = `<div class="spanLabel" id="cpuValueGreen">10%</div>`
-        cpuYellow.innerHTML = `<div class="spanLabel" id="cpuValueYellow">60%</div>`
-        cpuRed.innerHTML = `<div class="spanLabel" id="cpuValueRed">90%</div>`
-        cpuBotoes.innerHTML = `<button class="exc" id="deleteCPU" onclick="excluirCPU(), firstCPU()" >Excluir</button>
-                                <button id="editCPU" onclick="editarCPU()" >Editar</button>`
+        var warning = yellowCpu.value
+        var danger = redCpu.value
+
+        fetch(`/alerta/paramsProcessador/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
+            })
+        }).then((resposta) => {
+            if (resposta) {
+                window.location.reload()
+                console.log("cadastrado com sucesso")
+            }
+        }).catch((erro) => {
+            console.log(erro, "houve um erro")
+        })
+
+
+
 
     }
 
+    function cancelar() {
+        window.location.reload();
+    }
 
-// ------------------------------------- FUNÇÕES HD -------------------------
+    function criarHd() {
+        var divCpuPre = document.getElementById("paramHDfirst")
 
-function teste(){
-    console.log("teste")
-}
-
-function firstHD(){
-
-var hdDiv = document.getElementById('paramHD')
-
-hdDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">HD</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/HD.svg" alt="">
+        divCpuPre.innerHTML = `<p class="titleParam">HD</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/HD.svg" alt="">
+                                        
                                 
-                        
-                        </div>
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redHd" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowHd" style="text-align: center; height : 20px;">
+                                            </div>
 
-                        <div class="botoesC" id="botoesHdDiv">                                    
-                            <button class="exc" id="criarHD" onclick="criarHD()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                            
-                            
-                        </div>`
-
-
-}
-
-
-function criarHD(){
-
-var hdDiv = document.getElementById('paramHD')
-
-hdDiv.innerHTML = `<p class="titleParam">HD</p>
-                        <div class="paramMid">
-                        <img class="icon" src="../assetsDashboard/HD.svg" alt="">
-                                
-                        
-                            <div class="paramInputs">
-                                <div class="inputLine">
-                                    <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
-                                    <p class="label">Risco: </p>
-                                    <div id="hdRedDiv" class="redHD label">
-                                        <input type="number" id="redHD">
+                                            
+                                        </div>
+                                                                    
                                     </div>
-                                   
-                                    
+    
                                 </div>
-                                
-                                <div class="inputLine">
-                                    <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
-                                    <p class="label">Alerta: </p>
-                                    <div id="hdYellowDiv" class="yellowHD label">
-                                        <input type="number" id="yellowHD"> 
-                                    </div>
 
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setHd()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
                                     
-                                </div>
-                                
-                                <div class="inputLine">
-                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                    <p class="label">Normal: </p>
-                                    <div id="hdGreenDiv" class="greenHD label">
-                                        <input type="number" id="greenHD"> 
-                                    </div>
-                                   
-                                </div>                                    
-                            </div>
-
-                        </div>
-
-                        <div class="botoesC" id="botoesHdDiv">                                    
-                            <button id="applyHD" onclick="confirmarHD(), voltarHD()">Confirmar</button>
-                            <button id="backHD" onclick="firstHD()">Cancelar</button>
-                            
-                        </div>`
-
-}
-
-function confirmarHD(){
-
-    //Função do create
-
-}
-
-function excluirHD(){
-
-//Função do truncate
-
-}
-
-    function editarHD(){
-
-        var hdGreen = document.getElementById('hdGreenDiv')
-        var hdYellow = document.getElementById('hdYellowDiv')
-        var hdRed = document.getElementById('hdRedDiv')
-        var hdBotoes = document.getElementById('botoesHdDiv')
-
-        hdGreen.innerHTML = `<input type="number" id="greenHD">`
-        hdYellow.innerHTML = `<input type="number" id="yellowHD">`
-        hdRed.innerHTML = `<input type="number" id="redHD">`
-        hdBotoes.innerHTML = `<button id="applyHD" onclick="aplicarHD()">Aplicar</button>
-                                <button id="backHD" onclick="voltarHD()">Voltar</button>`
-
-        }
-
-    function voltarHD(){
-        var hdGreen = document.getElementById('hdGreenDiv')
-        var hdYellow = document.getElementById('hdYellowDiv')
-        var hdRed = document.getElementById('hdRedDiv')
-        var hdBotoes = document.getElementById('botoesHdDiv')
-
-        hdGreen.innerHTML = `<div class="spanLabel" id="hdValueGreen">10%</div>`
-        hdYellow.innerHTML = `<div class="spanLabel" id="hdValueYellow">60%</div>`
-        hdRed.innerHTML = `<div class="spanLabel" id="hdValueRed">90%</div>`
-        hdBotoes.innerHTML = `<button class="exc" id="deleteHD" onclick="excluirHD(), firstHD()" >Excluir</button>
-                                <button id="editHD" onclick="editarHD()" >Editar</button>`
-
+                                </div>`
     }
 
-// ------------------------------------- FUNÇÕES REDE -------------------------
+    function setHd() {
+        var warning = yellowHd.value
+        var danger = redHd.value
+        console.log(warning, danger)
 
-function firstREDE(){
+        fetch(`/alerta/paramsDisco/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
+            })
+        }).then((resposta) => {
+            if (resposta) {
+                window.location.reload()
+                console.log("cadastrado com sucesso")
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+    }
 
-var redeDiv = document.getElementById('paramREDE')
+    function criarRede() {
+        var divCpuPre = document.getElementById("paramREDEfirst")
 
-redeDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">REDE</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/REDE.svg" alt="">
-                                
-                        
-                        </div>
-
-                        <div class="botoesC" id="botoesRedeDiv">                                    
-                            <button class="exc" id="criarREDE" onclick="criarREDE()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                            
-                            
-                        </div>`
-
-
-}
-
-
-function criarREDE(){
-
-var redeDiv = document.getElementById('paramREDE')
-
-redeDiv.innerHTML = `<p class="titleParam">REDE</p>
+        divCpuPre.innerHTML = `<p class="titleParam">REDE</p>
                         <div class="paramMid">
                         <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
                                 
@@ -532,8 +626,8 @@ redeDiv.innerHTML = `<p class="titleParam">REDE</p>
                                 <div class="inputLine">
                                     <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                     <p class="label">Risco: </p>
-                                    <div id="redeRedDiv" class="redREDE label">
-                                        <input type="number" id="redREDE">
+                                    <div id="cpuRedDiv" class="redCPU label">
+                                        <input type="number" id="redRede" style="text-align: center; height : 20px;">
                                     </div>
                                    
                                     
@@ -542,103 +636,54 @@ redeDiv.innerHTML = `<p class="titleParam">REDE</p>
                                 <div class="inputLine">
                                     <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                     <p class="label">Alerta: </p>
-                                    <div id="redeYellowDiv" class="yellowREDE label">
-                                        <input type="number" id="yellowREDE"> 
+                                    <div id="cpuYellowDiv" class="yellowCPU label">
+                                        <input type="number" id="yellowRede" style="text-align: center; height : 20px;">
                                     </div>
 
                                     
                                 </div>
-                                
-                                <div class="inputLine">
-                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                    <p class="label">Normal: </p>
-                                    <div id="redeGreenDiv" class="greenREDE label">
-                                        <input type="number" id="greenREDE"> 
-                                    </div>
-                                   
-                                </div>                                    
+                                                            
                             </div>
 
                         </div>
 
-                        <div class="botoesC" id="botoesRedeDiv">                                    
-                            <button id="applyREDE" onclick="confirmarREDE(), voltarREDE()">Confirmar</button>
-                            <button id="backREDE" onclick="firstREDE()">Cancelar</button>
+                        <div class="botoesC" id="botoesCpuDiv">                                    
+                            <button id="applyCPU" onclick="setRede()"">Confirmar</button>
+                            <button id="backCPU" onclick="cancelar()">Cancelar</button>
                             
                         </div>`
 
-}
-
-function confirmarREDE(){
-
-    //Função do create
-
-}
-
-function excluirREDE(){
-
-//Função do truncate
-
-}
-
-    function editarREDE(){
-
-        var redeGreen = document.getElementById('redeGreenDiv')
-        var redeYellow = document.getElementById('redeYellowDiv')
-        var redeRed = document.getElementById('redeRedDiv')
-        var redeBotoes = document.getElementById('botoesRedeDiv')
-
-        redeGreen.innerHTML = `<input type="number" id="greenREDE">`
-        redeYellow.innerHTML = `<input type="number" id="yellowREDE">`
-        redeRed.innerHTML = `<input type="number" id="redREDE">`
-        redeBotoes.innerHTML = `<button id="applyREDE" onclick="aplicarREDE()">Aplicar</button>
-                                <button id="backREDE" onclick="voltarREDE()">Voltar</button>`
-
     }
 
-    function voltarREDE(){
-        var redeGreen = document.getElementById('redeGreenDiv')
-        var redeYellow = document.getElementById('redeYellowDiv')
-        var redeRed = document.getElementById('redeRedDiv')
-        var redeBotoes = document.getElementById('botoesRedeDiv')
+    function setRede() {
+        var warning = yellowRede.value
+        var danger = redRede.value
 
-        redeGreen.innerHTML = `<div class="spanLabel" id="redeValueGreen">10%</div>`
-        redeYellow.innerHTML = `<div class="spanLabel" id="redeValueYellow">60%</div>`
-        redeRed.innerHTML = `<div class="spanLabel" id="redeValueRed">90%</div>`
-        redeBotoes.innerHTML = `<button class="exc" id="deleteREDE" onclick="excluirREDE(), firstREDE()" >Excluir</button>
-                            <button id="editREDE" onclick="editarREDE()" >Editar</button>`
+        console.log(warning, danger)
 
+        fetch(`/alerta/paramsRede/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
+            })
+        }).then((resposta) => {
+            if (resposta) {
+                window.location.reload()
+                console.log("cadastrado")
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
     }
 
+    function criarRam() {
+        var divCpuPre = document.getElementById("paramRAMfirst")
 
-// ------------------------------------- FUNÇÕES RAM -------------------------
-
-function firstRAM(){
-
-var ramDiv = document.getElementById('paramRAM')
-
-ramDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">RAM</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/RAM.svg" alt="">
-                                
-                        
-                        </div>
-
-                        <div class="botoesC" id="botoesRamDiv">                                    
-                            <button class="exc" id="criarRAM" onclick="criarRAM()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
-                            
-                            
-                        </div>`
-
-
-}
-
-
-function criarRAM(){
-
-var ramDiv = document.getElementById('paramRAM')
-
-ramDiv.innerHTML = `<p class="titleParam">RAM</p>
+        divCpuPre.innerHTML = `<p class="titleParam">RAM</p>
                         <div class="paramMid">
                         <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
                                 
@@ -647,8 +692,8 @@ ramDiv.innerHTML = `<p class="titleParam">RAM</p>
                                 <div class="inputLine">
                                     <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                     <p class="label">Risco: </p>
-                                    <div id="ramRedDiv" class="redRAM label">
-                                        <input type="number" id="redRAM">
+                                    <div id="cpuRedDiv" class="redCPU label">
+                                        <input type="number" id="redRam" style="text-align: center; height : 20px;">
                                     </div>
                                    
                                     
@@ -657,75 +702,291 @@ ramDiv.innerHTML = `<p class="titleParam">RAM</p>
                                 <div class="inputLine">
                                     <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                     <p class="label">Alerta: </p>
-                                    <div id="ramYellowDiv" class="yellowRAM label">
-                                        <input type="number" id="yellowRAM"> 
+                                    <div id="cpuYellowDiv" class="yellowCPU label">
+                                        <input type="number" id="yellowRam" style="text-align: center; height : 20px;">
                                     </div>
 
                                     
                                 </div>
-                                
-                                <div class="inputLine">
-                                <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
-                                    <p class="label">Normal: </p>
-                                    <div id="ramGreenDiv" class="greenRAM label">
-                                        <input type="number" id="greenRAM"> 
-                                    </div>
-                                   
-                                </div>                                    
+                                                            
                             </div>
 
                         </div>
 
-                        <div class="botoesC" id="botoesRamDiv">                                    
-                            <button id="applyRAM" onclick="confirmarRAM(), voltarRAM()">Confirmar</button>
-                            <button id="backRAM" onclick="firstRAM()">Cancelar</button>
+                        <div class="botoesC" id="botoesCpuDiv">                                    
+                            <button id="applyCPU" onclick="setRam()"">Confirmar</button>
+                            <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                            
+                        </div>`
+    }
+
+    function setRam() {
+        var warning = yellowRam.value
+        var danger = redRam.value
+
+        console.log(warning, danger)
+
+        fetch(`/alerta/ParamsRam/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
+            })
+        }).then((resposta) => {
+            if (resposta) {
+                window.location.reload()
+                console.log("cadastrado com sucesso")
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+
+
+    }
+
+    function editarRam() {
+        console.log("ram")
+        var param = document.getElementById("paramRAM")
+
+        param.innerHTML = `<p class="titleParam">RAM</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redRam" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowRam" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setRam()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+    }
+
+    function editarHd() {
+        var param = document.getElementById("paramHD")
+        param.innerHTML = `<p class="titleParam">HD</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/HD.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redHd" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowHd" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setHd()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+
+
+
+
+    }
+
+    function editarRede() {
+        var param = document.getElementById("paramREDE");
+
+        param.innerHTML = `<p class="titleParam">REDE</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redRede" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowRede" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setRede()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+
+    }
+
+    function editarCpu() {
+        var param = document.getElementById("paramCPU");
+
+        param.innerHTML = `<p class="titleParam">CPU</p>
+                        <div class="paramMid">
+                        <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+                                
+                        
+                            <div class="paramInputs">
+                                <div class="inputLine">
+                                    <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                    <p class="label">Risco: </p>
+                                    <div id="cpuRedDiv" class="redCPU label">
+                                        <input type="number" id="redCpu" style="text-align: center; height : 20px;">
+                                    </div>
+                                   
+                                    
+                                </div>
+                                
+                                <div class="inputLine">
+                                    <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                    <p class="label">Alerta: </p>
+                                    <div id="cpuYellowDiv" class="yellowCPU label">
+                                        <input type="number" id="yellowCpu" style="text-align: center; height : 20px;">
+                                    </div>
+
+                                    
+                                    
+                                </div>
+                                                            
+                            </div>
+
+                        </div>
+
+                        <div class="botoesC" id="botoesCpuDiv">                                    
+                            <button id="applyCPU" onclick="setCpu()"">Confirmar</button>
+                            <button id="backCPU" onclick="cancelar()">Cancelar</button>
                             
                         </div>`
 
-}
-
-function confirmarRAM(){
-
-    //Função do create
-
-}
-
-
-function excluirRAM(){
-
-//Função do truncate
-
-}
-
-
-    function editarRAM(){
-
-        var ramGreen = document.getElementById('ramGreenDiv')
-        var ramYellow = document.getElementById('ramYellowDiv')
-        var ramRed = document.getElementById('ramRedDiv')
-        var ramBotoes = document.getElementById('botoesRamDiv')
-
-        ramGreen.innerHTML = `<input type="number" id="greenRAM">`
-        ramYellow.innerHTML = `<input type="number" id="yellowRAM">`
-        ramRed.innerHTML = `<input type="number" id="redRAM">`
-        ramBotoes.innerHTML = `<button id="applyRAM" onclick="aplicarRAM()">Aplicar</button>
-                                <button id="backRAM" onclick="voltarRAM()">Voltar</button>`
-
     }
 
-    function voltarRAM(){
-        var ramGreen = document.getElementById('ramGreenDiv')
-        var ramYellow = document.getElementById('ramYellowDiv')
-        var ramRed = document.getElementById('ramRedDiv')
-        var ramBotoes = document.getElementById('botoesRamDiv')
+    function deleteCPU() {
 
-        ramGreen.innerHTML = `<div class="spanLabel" id="ramValueGreen">10%</div>`
-        ramYellow.innerHTML = `<div class="spanLabel" id="ramValueYellow">60%</div>`
-        ramRed.innerHTML = `<div class="spanLabel" id="ramValueRed">90%</div>`
-        ramBotoes.innerHTML = `<button class="exc" id="deleteRAM" onclick="excluirRAM(), firstRAM()" >Excluir</button>
-                                <button id="editRAM" onclick="editarRAM()" >Editar</button>`
-
+        fetch(`/alerta/deleteProcessador/${idEmpresa}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then((resposta) => {
+            if (resposta) {
+                console.log("dado truncado");
+                window.location.reload()
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
     }
+
+    function deleteRam() {
+
+        fetch(`/alerta/deleteRam/${idEmpresa}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then((resposta) => {
+            if (resposta) {
+                console.log("dado truncado");
+                window.location.reload()
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+    }
+
+
+    function deleteDisco() {
+
+        fetch(`/alerta/deleteDisco/${idEmpresa}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then((resposta) => {
+            if (resposta) {
+                console.log("dado truncado");
+                window.location.reload()
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+    }
+
+    function deleteRede() {
+
+        fetch(`/alerta/deleteRede/${idEmpresa}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then((resposta) => {
+            if (resposta) {
+                console.log("dado truncado");
+                window.location.reload()
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+    }
+
+  
+
+
 
 
 </script>

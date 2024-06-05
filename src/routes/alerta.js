@@ -41,20 +41,11 @@ router.delete("/deleteDisco/:idEmpresa" , (req,res)=>{
     alertaController.deleteDisco(req,res);
 })
 
-router.put("/putRam/:idEmpresa" ,(req,res)=>{
-    alertaController.putRam(req,res);
-})
 
-router.put("/putProcessador/:idEmpresa" ,(req,res)=>{
-    alertaController.putProcessador(req,res);
-})
 
-router.put("/putRede/:idEmpresa" ,(req,res)=>{
-    alertaController.putRede(req,res);
-})
 
-router.put("/putDisco/:idEmpresa" ,(req,res)=>{
-    alertaController.putDisco(req,res);
+router.get("/getAllParamsJSON/:idEmpresa", (req,res)=>{
+    alertaController.getAllParamsJSON(req,res);
 })
 
 
