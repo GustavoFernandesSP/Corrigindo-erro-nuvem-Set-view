@@ -35,17 +35,8 @@ async function setProcess(idProcesso, isAllowed, idEmpresa, created_at) {
 
 
 
-function allowed(idEmpresa){
-    var instrucao = `
-        SELECT *
-        FROM permissoes
-        WHERE idPermissao IN (
-            SELECT MAX(idPermissao)
-            FROM permissoes
-            WHERE fkEmpresa = '${idEmpresa}'
-            GROUP BY fkProcesso
-        )
-        ORDER BY created_at DESC;`;
+function allowed(idEmpresa) {
+    var instrucao = "EXEC GetLatestPermissoesByEmpresa @idEmpresa = ${idEmpresa};";
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
