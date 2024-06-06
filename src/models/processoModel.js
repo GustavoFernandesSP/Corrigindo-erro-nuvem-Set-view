@@ -18,11 +18,14 @@ JOIN
 
 
 async function setProcess(idProcesso, isAllowed, idEmpresa, created_at) {
-    const instrucao = `
-        INSERT INTO permissoes (fkEmpresa, fkProcesso, isAllowed, created_at) 
-        VALUES ('${idEmpresa}', '${idProcesso}', '${isAllowed}', '${created_at}')
-        ON DUPLICATE KEY UPDATE 
-        isAllowed = VALUES(isAllowed);`;
+    const instrucao = 
+        `EXEC SetProcess 
+        @idProcesso = ${idProcesso}, 
+        @isAllowed = ${isAllowed}, 
+        @idEmpresa = ${idEmpresa}, 
+        @created_at = '${created_at}';`
+    ;
+
     try {
         await database.executar(instrucao);
         console.log("Permissão inserida/atualizada com sucesso.");
