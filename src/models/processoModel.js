@@ -36,9 +36,9 @@ async function setProcess(idProcesso, isAllowed, idEmpresa, created_at) {
 
 
 function allowed(idEmpresa) {
-    var instrucao = "EXEC GetLatestPermissoesByEmpresa @idEmpresa = ${idEmpresa};";
+    var instrucao = `EXEC GetLatestPermissoesByEmpresa @idEmpresa = '${idEmpresa}';`;
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    return database.executar(instrucao);''
 }
 
 
