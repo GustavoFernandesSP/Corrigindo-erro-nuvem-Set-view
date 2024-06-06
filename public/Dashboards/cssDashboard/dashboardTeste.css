@@ -464,7 +464,14 @@ p{
 }
 
 .textoLateral{
-    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    
+    text-align: center;
+    width: 40%;
 }
 
 .contentOpt{
@@ -473,6 +480,17 @@ p{
     justify-content: space-between;
     width: 50%;
     height: 100%;
+}
+
+.naoEncontrada{
+    height: auto;
+    /* border: solid 1px red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
 }
 
 .containerGeral{

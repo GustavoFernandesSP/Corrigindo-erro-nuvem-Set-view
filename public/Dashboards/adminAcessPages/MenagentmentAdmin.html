@@ -108,8 +108,9 @@
 
                 <div class="containerGeral" id="listaGeral">
                     <div class="textoLateral">
-                        <h1>Instruções</h1>
-                        <p> Nesta tela, o administrador pode alterar as informações do usuário selecionado. Utilize os campos fornecidos para modificar os dados necessários. Após fazer as alterações desejadas, clique em "Editar" para confirmar e salvar as mudanças. Se decidir não salvar as alterações, clique em "Voltar" para retornar à tela anterior sem efetuar nenhuma modificação.</p>
+                        <img style="margin: 0;" src="../assetsDashboard/Info.svg" alt="">
+                        <p style="font-size: 40px; padding-left: 0; ">Instruções</p> <br>
+                        <p style="padding: 0;"> Nesta tela, o administrador pode cadastrar novos usuários no sistema. Utilize os campos fornecidos para inserir as informações necessárias, como nome, email, e senha. Após preencher todos os campos obrigatórios, clique em "Cadastrar" para confirmar e salvar o novo usuário. Se decidir não prosseguir com o cadastro, clique em "Cancelar" para retornar à tela anterior sem salvar as informações.</p>
                     </div>
 
                     <div class="contentOpt">
@@ -129,10 +130,11 @@
                 </div>
                     
                     <div class="containerCad" id="conCad">
-                    <div class="textoLateral">
-                        <h1>Instruções</h1>
-                        <p> Nesta tela, o administrador pode alterar as informações do usuário selecionado. Utilize os campos fornecidos para modificar os dados necessários. Após fazer as alterações desejadas, clique em "Editar" para confirmar e salvar as mudanças. Se decidir não salvar as alterações, clique em "Voltar" para retornar à tela anterior sem efetuar nenhuma modificação.</p>
-                    </div>
+                        <div class="textoLateral">
+                            <img style="margin: 0;" src="../assetsDashboard/Info.svg" alt="">
+                            <p style="font-size: 40px; padding-left: 0; ">Instruções</p> <br>
+                            <p style="padding: 0;"> Nesta tela, o administrador pode cadastrar novos usuários no sistema. Utilize os campos fornecidos para inserir as informações necessárias, como nome, email, e senha. Após preencher todos os campos obrigatórios, clique em "Cadastrar" para confirmar e salvar o novo usuário. Se decidir não prosseguir com o cadastro, clique em "Cancelar" para retornar à tela anterior sem salvar as informações.</p>
+                        </div>
 
                     <div class="contentOpt">
                 
@@ -495,7 +497,10 @@
 
         if (userFiltrados.length === 0) {
             listaPesquisa.innerHTML += `   
-           usuario não encontrada`;
+            <div class="naoEncontrada">
+                        <img style="width: 80px;" src="../assetsDashboard/Emoji.svg" alt="">
+                        <p style="font-size: 30px;" >Não encontramos nenhum resultado!</p>
+                    </div>`;
         }
     }
 

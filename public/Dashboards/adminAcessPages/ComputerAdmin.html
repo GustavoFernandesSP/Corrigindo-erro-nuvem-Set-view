@@ -44,8 +44,8 @@
                     </div>
                 </div>
                 <div class="containerInfo" id="listaMaquinas">
-                    
-                    
+
+
 
 
                 </div>
@@ -77,6 +77,7 @@
 
 
     var idEmpresa = sessionStorage.FK_EMPRESA;
+    
     var nome = sessionStorage.NOME_USUARIO;
     var ramDanger = sessionStorage.RAM_DANGER;
     var ramWarning = sessionStorage.RAM_WARNING;
@@ -110,6 +111,19 @@
                         maquinas = resposta[i];
 
                         console.log(maquinas)
+
+
+                        if (maquinas.ramUso > ramWarning) {
+                            listaMaquinas.innerHTML += `
+                        
+                        <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
+                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
+                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
+                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
+                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
+                        </div> `
+                        }
 
                         if (maquinas.ramUso < ramWarning && maquinas.processadorUso < cpuWarning && maquinas.discoUso < discoWarning && maquinas.bytesEnviados < redeWarning) {
                             listaMaquinas.innerHTML += `
@@ -162,11 +176,11 @@
 
 
 
-function transporterIdToDash(id){
+    function transporterIdToDash(id) {
 
-    sessionStorage.MAQUINA_SELECIONADA = id;
-    window.location = "./DashboardAdminAcess.html";
-}
+        sessionStorage.MAQUINA_SELECIONADA = id;
+        window.location = "./DashboardAdminAcess.html";
+    }
 
 
 
